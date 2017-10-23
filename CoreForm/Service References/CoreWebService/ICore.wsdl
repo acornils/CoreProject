@@ -1,0 +1,2939 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="addCarTypeAttribute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="carTypeID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="attribute" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addCarTypeAttributeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="addCarTypeAttributeResult" type="tns:CarTypeAttributeResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CarTypeAttributeResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:CarTypeAttribute" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CarTypeAttribute">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TestMode" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="carTypeID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="attribute" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="isDeleted" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="updateCarTypeAttribute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="attribute" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateCarTypeAttributeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updateCarTypeAttributeResult" type="tns:CarTypeAttributeResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listCarTypeAttributes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="carTypeID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listCarTypeAttributesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listCarTypeAttributesResult" type="tns:CarTypeAttributeListResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CarTypeAttributeListResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:ArrayOfCarTypeAttribute" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCarTypeAttribute">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CarTypeAttribute" nillable="true" type="tns:CarTypeAttribute" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="deleteCarTypeAttribute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteCarTypeAttributeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deleteCarTypeAttributeResult" type="tns:CarTypeAttributeResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteCarTypeAttributeByCarType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteCarTypeAttributeByCarTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deleteCarTypeAttributeByCarTypeResult" type="tns:CarTypeAttributeListResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addCarType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="shortName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="longName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addCarTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="addCarTypeResult" type="tns:CarTypeResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CarTypeResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:CarType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CarType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TestMode" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="shortName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="longName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="isDeleted" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="updateCarType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="shortName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="longName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateCarTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updateCarTypeResult" type="tns:CarTypeResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCarType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCarTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCarTypeResult" type="tns:CarTypeResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteCarType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteCarTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deleteCarTypeResult" type="tns:CarTypeResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listCarTypes">
+        <s:complexType />
+      </s:element>
+      <s:element name="listCarTypesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listCarTypesResult" type="tns:CarTypeListResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CarTypeListResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:ArrayOfCarType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCarType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CarType" nillable="true" type="tns:CarType" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="addRollingStockAttribute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="rollingStockID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="carTypeAttrID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addRollingStockAttributeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="addRollingStockAttributeResult" type="tns:RollingStockAttributeResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RollingStockAttributeResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:rollingStockAtrribute" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="rollingStockAtrribute">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TestMode" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="rollingStockID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="carTypeAttrID" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="deleteRollingStockAttribute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteRollingStockAttributeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deleteRollingStockAttributeResult" type="tns:RollingStockAttributeResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteAllRollingStockAttribute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="rollingStockID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteAllRollingStockAttributeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deleteAllRollingStockAttributeResult" type="tns:RollingStockAttributeListResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RollingStockAttributeListResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:ArrayOfRollingStockAtrribute" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRollingStockAtrribute">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="rollingStockAtrribute" nillable="true" type="tns:rollingStockAtrribute" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="listRollingStockAttribute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="rollingStockID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listRollingStockAttributeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listRollingStockAttributeResult" type="tns:RollingStockAttributeListResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addRollingStock">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="roadNumber" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="arrCodeID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="length" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="capacityTonnage" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="carTypeID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="RFID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="displayText" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addRollingStockResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="addRollingStockResult" type="tns:RollingStockResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RollingStockResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:RollingStock" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RollingStock">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TestMode" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="roadNumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="arrCodeID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="displayText" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="length" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="capacityTonnage" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="carTypeID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="locationID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="RFID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="trainID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="isNotConfiscatable" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="nextRS" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="isFirst" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="isLast" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="isOutOfService" nillable="true" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="updateRollingstock">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="roadNumber" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="arrCodeID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="length" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="capacityTonnage" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="carTypeID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="RFID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="displayText" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateRollingstockResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updateRollingstockResult" type="tns:RollingStockResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getRollingStock">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getRollingStockResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getRollingStockResult" type="tns:RollingStockResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteRollingStock">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteRollingStockResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deleteRollingStockResult" type="tns:RollingStockResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listRollingStockForWaybill">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="billOfLadingID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listRollingStockForWaybillResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listRollingStockForWaybillResult" type="tns:RollingStockListResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RollingStockListResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:ArrayOfRollingStock" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRollingStock">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RollingStock" nillable="true" type="tns:RollingStock" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="listAllRollingStock">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="search" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listAllRollingStockResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listAllRollingStockResult" type="tns:RollingStockListResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addLocation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="shortName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="scannerMAC" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="scannerHead" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isRFIDRead" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addLocationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="addLocationResult" type="tns:LocationResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LocationResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:Location" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Location">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TestMode" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="shortName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ScannerMAC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ScannerHead" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="isRFIDRead" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="isDeleted" nillable="true" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="updateLocation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="shortName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="scannerMAC" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="scannerHead" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isRFIDRead" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateLocationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updateLocationResult" type="tns:LocationResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLocation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLocationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getLocationResult" type="tns:LocationResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteLocation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteLocationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deleteLocationResult" type="tns:LocationResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listLocations">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="search" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listLocationsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listLocationsResult" type="tns:LocationListResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LocationListResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:ArrayOfLocation" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfLocation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Location" nillable="true" type="tns:Location" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getSetting">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSettingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getSettingResult" type="tns:Setting" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Setting">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TestMode" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="setSetting">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="value" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setSettingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="setSettingResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addSwitchListTemplate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="image" type="s:base64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="firstRowStart" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="rowSpacing" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="initialCol" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="numberCol" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="kindCol" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="originCol" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="destinationCol" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="tonsColumn" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="remarksCol" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="trainNoLoc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="engineNoLoc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="stationLoc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="timeLoc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="yearLoc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dateLoc" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxRows" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="backRowStart" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxRowsBack" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="contentsCol" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addSwitchListTemplateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="addSwitchListTemplateResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateSwitchListTemplate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="image" type="s:base64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="firstRowStart" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="rowSpacing" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="initialCol" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="numberCol" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="kindCol" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="originCol" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="destinationCol" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="tonsColumn" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="remarksCol" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="trainNoLoc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="engineNoLoc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="stationLoc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="timeLoc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="yearLoc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dateLoc" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxRows" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="backRowStart" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxRowsBack" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="contentsCol" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateSwitchListTemplateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="updateSwitchListTemplateResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteSwitchListTemplate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteSwitchListTemplateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="deleteSwitchListTemplateResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listAllSwitchListTemplates">
+        <s:complexType />
+      </s:element>
+      <s:element name="listAllSwitchListTemplatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listAllSwitchListTemplatesResult" type="tns:ArrayOfSwitchListsLayout" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSwitchListsLayout">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SwitchListsLayout" nillable="true" type="tns:SwitchListsLayout" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SwitchListsLayout">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TestMode" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="image" type="s:base64Binary" />
+          <s:element minOccurs="1" maxOccurs="1" name="firstRowStart" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="rowSpacing" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="initialColumn" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="numberColumn" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="kindColumn" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="contentsColumn" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="originColumn" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="destinationColumn" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="tonsColumn" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="remarksColumn" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="trainNoLocation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="engineNoLocation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="stationLocation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="timeLocation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="yearLocation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dateLocation" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="maxRows" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="backRowStart" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="maxRowsFront" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getSwitchListTemplate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSwitchListTemplateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getSwitchListTemplateResult" type="tns:SwitchListsLayout" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addArrCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="no" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="carrier" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="abbr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addArrCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="addArrCodeResult" type="tns:ArrCodeResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrCodeResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:ARRCode" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ARRCode">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TestMode" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="No" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Carrier" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Abbr" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="isDeleted" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="updateArrCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="no" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="carrier" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="abbr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateArrCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updateArrCodeResult" type="tns:ArrCodeResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteArrCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteArrCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deleteArrCodeResult" type="tns:ArrCodeResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getArrCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getArrCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getArrCodeResult" type="tns:ArrCodeResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listAllArrCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="search" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listAllArrCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listAllArrCodeResult" type="tns:ArrCodeListResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrCodeListResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:ArrayOfARRCode" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfARRCode">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ARRCode" nillable="true" type="tns:ARRCode" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="addConsigneeShipper">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="locationID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="arrCodeID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addConsigneeShipperResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="addConsigneeShipperResult" type="tns:ConsigneeShipperResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ConsigneeShipperResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:ConsigneeShipper" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ConsigneeShipper">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TestMode" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="locationID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="aarCodeID" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="updateConsigneeShipper">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="locationID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="arrCodeID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateConsigneeShipperResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updateConsigneeShipperResult" type="tns:ConsigneeShipperResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteConsigneeShipper">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteConsigneeShipperResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deleteConsigneeShipperResult" type="tns:ConsigneeShipperResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getConsigneeShipper">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getConsigneeShipperResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getConsigneeShipperResult" type="tns:ConsigneeShipperResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listConsigneeShipper">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="search" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listConsigneeShipperResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listConsigneeShipperResult" type="tns:ConsigneeShipperListResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ConsigneeShipperListResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:ArrayOfConsigneeShipper" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfConsigneeShipper">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ConsigneeShipper" nillable="true" type="tns:ConsigneeShipper" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="addBillOfLading">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="consigneeID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="shipperID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="carTypeRequestID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="carLengthRequested" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="carCapacityRequested" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="noPackages" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="descriptionOfArticles" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isPerishable" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="isPreIce" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="isInitialIce" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="cps" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="isEmptyCarBill" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="isLiveStock" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="isReverseRoute" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="isReturnEmpty" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="isNextWaybill" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="nextWaybill" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="requestedCarsPerDay" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="timeToUnload" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="timeToLoad" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="displayText" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isActive" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addBillOfLadingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="addBillOfLadingResult" type="tns:BillOfLadingResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="BillOfLadingResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:BillOfLading" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BillOfLading">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TestMode" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="consigneeID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="shipperID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="carTypeRequestedID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="carLengthRequested" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="carCapacityRequested" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="noPackages" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="descriptionOfArticles" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="displayText" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="isPerishable" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="isPreIce" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="isInitialIce" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="cps" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="isEmptyCarRequested" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="isLiveStock" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="isReverseRoute" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="isReturnEmpty" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="isNextBillOfLading" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="nextBillOfLadingID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="requestedCarsPerDay" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="timeToUnload" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="timeToLoad" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="isTemplateActive" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="isDeleted" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="isTemplate" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedOn" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="RollingStockID" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="updateBillOfLading">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="consigneeID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="shipperID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="carTypeRequestID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="carLengthRequested" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="carCapacityRequested" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="noPackages" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="descriptionOfArticles" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isPerishable" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="isPreIce" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="isInitialIce" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="cps" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="isEmptyCarBill" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="isLiveStock" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="isReverseRoute" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="isReturnEmpty" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="isNextWaybill" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="nextWaybill" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="requestedCarsPerDay" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="timeToUnload" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="timeToLoad" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="displayText" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isActive" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateBillOfLadingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updateBillOfLadingResult" type="tns:BillOfLadingResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getBillOfLading">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getBillOfLadingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getBillOfLadingResult" type="tns:BillOfLadingResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listBillOfLading">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="search" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listBillOfLadingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listBillOfLadingResult" type="tns:BillOfLadingListResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="BillOfLadingListResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:ArrayOfBillOfLading" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfBillOfLading">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BillOfLading" nillable="true" type="tns:BillOfLading" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="deleteBillOfLading">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteBillOfLadingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deleteBillOfLadingResult" type="tns:BillOfLadingResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addBillOfLadingPath">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="billOfLadingID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="locationID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="nextLocationID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="isFirst" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addBillOfLadingPathResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="addBillOfLadingPathResult" type="tns:BillOfLadingPathResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="BillOfLadingPathResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:BillOfLadingPath" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BillOfLadingPath">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TestMode" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="billOfLadingID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="locationID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="nextID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="isFirst" nillable="true" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="updateBillOfLadingPath">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="billOfLadingID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="nextLocationID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateBillOfLadingPathResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updateBillOfLadingPathResult" type="tns:BillOfLadingPathResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteBillOfLadingPath">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="billOfLadingID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteBillOfLadingPathResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deleteBillOfLadingPathResult" type="tns:BillOfLadingPathListResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="BillOfLadingPathListResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:ArrayOfBillOfLadingPath" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfBillOfLadingPath">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BillOfLadingPath" nillable="true" type="tns:BillOfLadingPath" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="listBillOfLadingPath">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="billOfLadingID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listBillOfLadingPathResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listBillOfLadingPathResult" type="tns:BillOfLadingPathListResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addBillOfLadingCartypeAttribute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="billOfLadingID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="carTypeAttributeID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addBillOfLadingCartypeAttributeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="addBillOfLadingCartypeAttributeResult" type="tns:BillOfLadingCarTypeAttributesResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="BillOfLadingCarTypeAttributesResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:BillOfLadingRequestedCarTypeAttribute" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BillOfLadingRequestedCarTypeAttribute">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TestMode" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="billOfLadingID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="carTypeAttributeID" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="listBillOfLadingCartypeAttribute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="billOfLadingID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listBillOfLadingCartypeAttributeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listBillOfLadingCartypeAttributeResult" type="tns:BillOfLadingCarTypeAttributesListResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="BillOfLadingCarTypeAttributesListResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:ArrayOfBillOfLadingRequestedCarTypeAttribute" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfBillOfLadingRequestedCarTypeAttribute">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BillOfLadingRequestedCarTypeAttribute" nillable="true" type="tns:BillOfLadingRequestedCarTypeAttribute" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="deleteBillOfLadingCartypeAttribute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="billOfLadingID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteBillOfLadingCartypeAttributeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deleteBillOfLadingCartypeAttributeResult" type="tns:BillOfLadingCarTypeAttributesListResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addWaybill">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="billOfLadingID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="carID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="loadedAt" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="unloadedAt" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="preIcedAt" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="initialIcedAt" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="isWeighed" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="weight" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="currentLocationID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addWaybillResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="addWaybillResult" type="tns:WaybillResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WaybillResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:Waybill" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Waybill">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TestMode" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="billOfLadingID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="loadedAt" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="unloadedAt" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="preIcedAt" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="initialIcedAt" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="isWeighed" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="weight" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="onSpotAtShipper" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="onSpotAtConsignee" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="isEmptyWayBill" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedOn" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="updateWaybill">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="billOfLadingID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="carID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="loadedAt" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="unloadedAt" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="preIcedAt" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="initialIcedAt" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="isWeighed" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="weight" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="currentLocationID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateWaybillResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updateWaybillResult" type="tns:WaybillResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getWaybill">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getWaybillResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getWaybillResult" type="tns:WaybillResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="addCarTypeAttributeSoapIn">
+    <wsdl:part name="parameters" element="tns:addCarTypeAttribute" />
+  </wsdl:message>
+  <wsdl:message name="addCarTypeAttributeSoapOut">
+    <wsdl:part name="parameters" element="tns:addCarTypeAttributeResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateCarTypeAttributeSoapIn">
+    <wsdl:part name="parameters" element="tns:updateCarTypeAttribute" />
+  </wsdl:message>
+  <wsdl:message name="updateCarTypeAttributeSoapOut">
+    <wsdl:part name="parameters" element="tns:updateCarTypeAttributeResponse" />
+  </wsdl:message>
+  <wsdl:message name="listCarTypeAttributesSoapIn">
+    <wsdl:part name="parameters" element="tns:listCarTypeAttributes" />
+  </wsdl:message>
+  <wsdl:message name="listCarTypeAttributesSoapOut">
+    <wsdl:part name="parameters" element="tns:listCarTypeAttributesResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteCarTypeAttributeSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteCarTypeAttribute" />
+  </wsdl:message>
+  <wsdl:message name="deleteCarTypeAttributeSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteCarTypeAttributeResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteCarTypeAttributeByCarTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteCarTypeAttributeByCarType" />
+  </wsdl:message>
+  <wsdl:message name="deleteCarTypeAttributeByCarTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteCarTypeAttributeByCarTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="addCarTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:addCarType" />
+  </wsdl:message>
+  <wsdl:message name="addCarTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:addCarTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateCarTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:updateCarType" />
+  </wsdl:message>
+  <wsdl:message name="updateCarTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:updateCarTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCarTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:getCarType" />
+  </wsdl:message>
+  <wsdl:message name="getCarTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:getCarTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteCarTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteCarType" />
+  </wsdl:message>
+  <wsdl:message name="deleteCarTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteCarTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="listCarTypesSoapIn">
+    <wsdl:part name="parameters" element="tns:listCarTypes" />
+  </wsdl:message>
+  <wsdl:message name="listCarTypesSoapOut">
+    <wsdl:part name="parameters" element="tns:listCarTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="addRollingStockAttributeSoapIn">
+    <wsdl:part name="parameters" element="tns:addRollingStockAttribute" />
+  </wsdl:message>
+  <wsdl:message name="addRollingStockAttributeSoapOut">
+    <wsdl:part name="parameters" element="tns:addRollingStockAttributeResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteRollingStockAttributeSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteRollingStockAttribute" />
+  </wsdl:message>
+  <wsdl:message name="deleteRollingStockAttributeSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteRollingStockAttributeResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteAllRollingStockAttributeSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteAllRollingStockAttribute" />
+  </wsdl:message>
+  <wsdl:message name="deleteAllRollingStockAttributeSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteAllRollingStockAttributeResponse" />
+  </wsdl:message>
+  <wsdl:message name="listRollingStockAttributeSoapIn">
+    <wsdl:part name="parameters" element="tns:listRollingStockAttribute" />
+  </wsdl:message>
+  <wsdl:message name="listRollingStockAttributeSoapOut">
+    <wsdl:part name="parameters" element="tns:listRollingStockAttributeResponse" />
+  </wsdl:message>
+  <wsdl:message name="addRollingStockSoapIn">
+    <wsdl:part name="parameters" element="tns:addRollingStock" />
+  </wsdl:message>
+  <wsdl:message name="addRollingStockSoapOut">
+    <wsdl:part name="parameters" element="tns:addRollingStockResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateRollingstockSoapIn">
+    <wsdl:part name="parameters" element="tns:updateRollingstock" />
+  </wsdl:message>
+  <wsdl:message name="updateRollingstockSoapOut">
+    <wsdl:part name="parameters" element="tns:updateRollingstockResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRollingStockSoapIn">
+    <wsdl:part name="parameters" element="tns:getRollingStock" />
+  </wsdl:message>
+  <wsdl:message name="getRollingStockSoapOut">
+    <wsdl:part name="parameters" element="tns:getRollingStockResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteRollingStockSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteRollingStock" />
+  </wsdl:message>
+  <wsdl:message name="deleteRollingStockSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteRollingStockResponse" />
+  </wsdl:message>
+  <wsdl:message name="listRollingStockForWaybillSoapIn">
+    <wsdl:part name="parameters" element="tns:listRollingStockForWaybill" />
+  </wsdl:message>
+  <wsdl:message name="listRollingStockForWaybillSoapOut">
+    <wsdl:part name="parameters" element="tns:listRollingStockForWaybillResponse" />
+  </wsdl:message>
+  <wsdl:message name="listAllRollingStockSoapIn">
+    <wsdl:part name="parameters" element="tns:listAllRollingStock" />
+  </wsdl:message>
+  <wsdl:message name="listAllRollingStockSoapOut">
+    <wsdl:part name="parameters" element="tns:listAllRollingStockResponse" />
+  </wsdl:message>
+  <wsdl:message name="addLocationSoapIn">
+    <wsdl:part name="parameters" element="tns:addLocation" />
+  </wsdl:message>
+  <wsdl:message name="addLocationSoapOut">
+    <wsdl:part name="parameters" element="tns:addLocationResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateLocationSoapIn">
+    <wsdl:part name="parameters" element="tns:updateLocation" />
+  </wsdl:message>
+  <wsdl:message name="updateLocationSoapOut">
+    <wsdl:part name="parameters" element="tns:updateLocationResponse" />
+  </wsdl:message>
+  <wsdl:message name="getLocationSoapIn">
+    <wsdl:part name="parameters" element="tns:getLocation" />
+  </wsdl:message>
+  <wsdl:message name="getLocationSoapOut">
+    <wsdl:part name="parameters" element="tns:getLocationResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteLocationSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteLocation" />
+  </wsdl:message>
+  <wsdl:message name="deleteLocationSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteLocationResponse" />
+  </wsdl:message>
+  <wsdl:message name="listLocationsSoapIn">
+    <wsdl:part name="parameters" element="tns:listLocations" />
+  </wsdl:message>
+  <wsdl:message name="listLocationsSoapOut">
+    <wsdl:part name="parameters" element="tns:listLocationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getSettingSoapIn">
+    <wsdl:part name="parameters" element="tns:getSetting" />
+  </wsdl:message>
+  <wsdl:message name="getSettingSoapOut">
+    <wsdl:part name="parameters" element="tns:getSettingResponse" />
+  </wsdl:message>
+  <wsdl:message name="setSettingSoapIn">
+    <wsdl:part name="parameters" element="tns:setSetting" />
+  </wsdl:message>
+  <wsdl:message name="setSettingSoapOut">
+    <wsdl:part name="parameters" element="tns:setSettingResponse" />
+  </wsdl:message>
+  <wsdl:message name="addSwitchListTemplateSoapIn">
+    <wsdl:part name="parameters" element="tns:addSwitchListTemplate" />
+  </wsdl:message>
+  <wsdl:message name="addSwitchListTemplateSoapOut">
+    <wsdl:part name="parameters" element="tns:addSwitchListTemplateResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateSwitchListTemplateSoapIn">
+    <wsdl:part name="parameters" element="tns:updateSwitchListTemplate" />
+  </wsdl:message>
+  <wsdl:message name="updateSwitchListTemplateSoapOut">
+    <wsdl:part name="parameters" element="tns:updateSwitchListTemplateResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteSwitchListTemplateSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteSwitchListTemplate" />
+  </wsdl:message>
+  <wsdl:message name="deleteSwitchListTemplateSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteSwitchListTemplateResponse" />
+  </wsdl:message>
+  <wsdl:message name="listAllSwitchListTemplatesSoapIn">
+    <wsdl:part name="parameters" element="tns:listAllSwitchListTemplates" />
+  </wsdl:message>
+  <wsdl:message name="listAllSwitchListTemplatesSoapOut">
+    <wsdl:part name="parameters" element="tns:listAllSwitchListTemplatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="getSwitchListTemplateSoapIn">
+    <wsdl:part name="parameters" element="tns:getSwitchListTemplate" />
+  </wsdl:message>
+  <wsdl:message name="getSwitchListTemplateSoapOut">
+    <wsdl:part name="parameters" element="tns:getSwitchListTemplateResponse" />
+  </wsdl:message>
+  <wsdl:message name="addArrCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:addArrCode" />
+  </wsdl:message>
+  <wsdl:message name="addArrCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:addArrCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateArrCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:updateArrCode" />
+  </wsdl:message>
+  <wsdl:message name="updateArrCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:updateArrCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteArrCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteArrCode" />
+  </wsdl:message>
+  <wsdl:message name="deleteArrCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteArrCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="getArrCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:getArrCode" />
+  </wsdl:message>
+  <wsdl:message name="getArrCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:getArrCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="listAllArrCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:listAllArrCode" />
+  </wsdl:message>
+  <wsdl:message name="listAllArrCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:listAllArrCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="addConsigneeShipperSoapIn">
+    <wsdl:part name="parameters" element="tns:addConsigneeShipper" />
+  </wsdl:message>
+  <wsdl:message name="addConsigneeShipperSoapOut">
+    <wsdl:part name="parameters" element="tns:addConsigneeShipperResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateConsigneeShipperSoapIn">
+    <wsdl:part name="parameters" element="tns:updateConsigneeShipper" />
+  </wsdl:message>
+  <wsdl:message name="updateConsigneeShipperSoapOut">
+    <wsdl:part name="parameters" element="tns:updateConsigneeShipperResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteConsigneeShipperSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteConsigneeShipper" />
+  </wsdl:message>
+  <wsdl:message name="deleteConsigneeShipperSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteConsigneeShipperResponse" />
+  </wsdl:message>
+  <wsdl:message name="getConsigneeShipperSoapIn">
+    <wsdl:part name="parameters" element="tns:getConsigneeShipper" />
+  </wsdl:message>
+  <wsdl:message name="getConsigneeShipperSoapOut">
+    <wsdl:part name="parameters" element="tns:getConsigneeShipperResponse" />
+  </wsdl:message>
+  <wsdl:message name="listConsigneeShipperSoapIn">
+    <wsdl:part name="parameters" element="tns:listConsigneeShipper" />
+  </wsdl:message>
+  <wsdl:message name="listConsigneeShipperSoapOut">
+    <wsdl:part name="parameters" element="tns:listConsigneeShipperResponse" />
+  </wsdl:message>
+  <wsdl:message name="addBillOfLadingSoapIn">
+    <wsdl:part name="parameters" element="tns:addBillOfLading" />
+  </wsdl:message>
+  <wsdl:message name="addBillOfLadingSoapOut">
+    <wsdl:part name="parameters" element="tns:addBillOfLadingResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateBillOfLadingSoapIn">
+    <wsdl:part name="parameters" element="tns:updateBillOfLading" />
+  </wsdl:message>
+  <wsdl:message name="updateBillOfLadingSoapOut">
+    <wsdl:part name="parameters" element="tns:updateBillOfLadingResponse" />
+  </wsdl:message>
+  <wsdl:message name="getBillOfLadingSoapIn">
+    <wsdl:part name="parameters" element="tns:getBillOfLading" />
+  </wsdl:message>
+  <wsdl:message name="getBillOfLadingSoapOut">
+    <wsdl:part name="parameters" element="tns:getBillOfLadingResponse" />
+  </wsdl:message>
+  <wsdl:message name="listBillOfLadingSoapIn">
+    <wsdl:part name="parameters" element="tns:listBillOfLading" />
+  </wsdl:message>
+  <wsdl:message name="listBillOfLadingSoapOut">
+    <wsdl:part name="parameters" element="tns:listBillOfLadingResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteBillOfLadingSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteBillOfLading" />
+  </wsdl:message>
+  <wsdl:message name="deleteBillOfLadingSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteBillOfLadingResponse" />
+  </wsdl:message>
+  <wsdl:message name="addBillOfLadingPathSoapIn">
+    <wsdl:part name="parameters" element="tns:addBillOfLadingPath" />
+  </wsdl:message>
+  <wsdl:message name="addBillOfLadingPathSoapOut">
+    <wsdl:part name="parameters" element="tns:addBillOfLadingPathResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateBillOfLadingPathSoapIn">
+    <wsdl:part name="parameters" element="tns:updateBillOfLadingPath" />
+  </wsdl:message>
+  <wsdl:message name="updateBillOfLadingPathSoapOut">
+    <wsdl:part name="parameters" element="tns:updateBillOfLadingPathResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteBillOfLadingPathSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteBillOfLadingPath" />
+  </wsdl:message>
+  <wsdl:message name="deleteBillOfLadingPathSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteBillOfLadingPathResponse" />
+  </wsdl:message>
+  <wsdl:message name="listBillOfLadingPathSoapIn">
+    <wsdl:part name="parameters" element="tns:listBillOfLadingPath" />
+  </wsdl:message>
+  <wsdl:message name="listBillOfLadingPathSoapOut">
+    <wsdl:part name="parameters" element="tns:listBillOfLadingPathResponse" />
+  </wsdl:message>
+  <wsdl:message name="addBillOfLadingCartypeAttributeSoapIn">
+    <wsdl:part name="parameters" element="tns:addBillOfLadingCartypeAttribute" />
+  </wsdl:message>
+  <wsdl:message name="addBillOfLadingCartypeAttributeSoapOut">
+    <wsdl:part name="parameters" element="tns:addBillOfLadingCartypeAttributeResponse" />
+  </wsdl:message>
+  <wsdl:message name="listBillOfLadingCartypeAttributeSoapIn">
+    <wsdl:part name="parameters" element="tns:listBillOfLadingCartypeAttribute" />
+  </wsdl:message>
+  <wsdl:message name="listBillOfLadingCartypeAttributeSoapOut">
+    <wsdl:part name="parameters" element="tns:listBillOfLadingCartypeAttributeResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteBillOfLadingCartypeAttributeSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteBillOfLadingCartypeAttribute" />
+  </wsdl:message>
+  <wsdl:message name="deleteBillOfLadingCartypeAttributeSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteBillOfLadingCartypeAttributeResponse" />
+  </wsdl:message>
+  <wsdl:message name="addWaybillSoapIn">
+    <wsdl:part name="parameters" element="tns:addWaybill" />
+  </wsdl:message>
+  <wsdl:message name="addWaybillSoapOut">
+    <wsdl:part name="parameters" element="tns:addWaybillResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateWaybillSoapIn">
+    <wsdl:part name="parameters" element="tns:updateWaybill" />
+  </wsdl:message>
+  <wsdl:message name="updateWaybillSoapOut">
+    <wsdl:part name="parameters" element="tns:updateWaybillResponse" />
+  </wsdl:message>
+  <wsdl:message name="getWaybillSoapIn">
+    <wsdl:part name="parameters" element="tns:getWaybill" />
+  </wsdl:message>
+  <wsdl:message name="getWaybillSoapOut">
+    <wsdl:part name="parameters" element="tns:getWaybillResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ICoreSoap">
+    <wsdl:operation name="addCarTypeAttribute">
+      <wsdl:input message="tns:addCarTypeAttributeSoapIn" />
+      <wsdl:output message="tns:addCarTypeAttributeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateCarTypeAttribute">
+      <wsdl:input message="tns:updateCarTypeAttributeSoapIn" />
+      <wsdl:output message="tns:updateCarTypeAttributeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listCarTypeAttributes">
+      <wsdl:input message="tns:listCarTypeAttributesSoapIn" />
+      <wsdl:output message="tns:listCarTypeAttributesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteCarTypeAttribute">
+      <wsdl:input message="tns:deleteCarTypeAttributeSoapIn" />
+      <wsdl:output message="tns:deleteCarTypeAttributeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteCarTypeAttributeByCarType">
+      <wsdl:input message="tns:deleteCarTypeAttributeByCarTypeSoapIn" />
+      <wsdl:output message="tns:deleteCarTypeAttributeByCarTypeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="addCarType">
+      <wsdl:input message="tns:addCarTypeSoapIn" />
+      <wsdl:output message="tns:addCarTypeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateCarType">
+      <wsdl:input message="tns:updateCarTypeSoapIn" />
+      <wsdl:output message="tns:updateCarTypeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCarType">
+      <wsdl:input message="tns:getCarTypeSoapIn" />
+      <wsdl:output message="tns:getCarTypeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteCarType">
+      <wsdl:input message="tns:deleteCarTypeSoapIn" />
+      <wsdl:output message="tns:deleteCarTypeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listCarTypes">
+      <wsdl:input message="tns:listCarTypesSoapIn" />
+      <wsdl:output message="tns:listCarTypesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="addRollingStockAttribute">
+      <wsdl:input message="tns:addRollingStockAttributeSoapIn" />
+      <wsdl:output message="tns:addRollingStockAttributeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteRollingStockAttribute">
+      <wsdl:input message="tns:deleteRollingStockAttributeSoapIn" />
+      <wsdl:output message="tns:deleteRollingStockAttributeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteAllRollingStockAttribute">
+      <wsdl:input message="tns:deleteAllRollingStockAttributeSoapIn" />
+      <wsdl:output message="tns:deleteAllRollingStockAttributeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listRollingStockAttribute">
+      <wsdl:input message="tns:listRollingStockAttributeSoapIn" />
+      <wsdl:output message="tns:listRollingStockAttributeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="addRollingStock">
+      <wsdl:input message="tns:addRollingStockSoapIn" />
+      <wsdl:output message="tns:addRollingStockSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateRollingstock">
+      <wsdl:input message="tns:updateRollingstockSoapIn" />
+      <wsdl:output message="tns:updateRollingstockSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getRollingStock">
+      <wsdl:input message="tns:getRollingStockSoapIn" />
+      <wsdl:output message="tns:getRollingStockSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteRollingStock">
+      <wsdl:input message="tns:deleteRollingStockSoapIn" />
+      <wsdl:output message="tns:deleteRollingStockSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listRollingStockForWaybill">
+      <wsdl:input message="tns:listRollingStockForWaybillSoapIn" />
+      <wsdl:output message="tns:listRollingStockForWaybillSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listAllRollingStock">
+      <wsdl:input message="tns:listAllRollingStockSoapIn" />
+      <wsdl:output message="tns:listAllRollingStockSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="addLocation">
+      <wsdl:input message="tns:addLocationSoapIn" />
+      <wsdl:output message="tns:addLocationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateLocation">
+      <wsdl:input message="tns:updateLocationSoapIn" />
+      <wsdl:output message="tns:updateLocationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getLocation">
+      <wsdl:input message="tns:getLocationSoapIn" />
+      <wsdl:output message="tns:getLocationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteLocation">
+      <wsdl:input message="tns:deleteLocationSoapIn" />
+      <wsdl:output message="tns:deleteLocationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listLocations">
+      <wsdl:input message="tns:listLocationsSoapIn" />
+      <wsdl:output message="tns:listLocationsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSetting">
+      <wsdl:input message="tns:getSettingSoapIn" />
+      <wsdl:output message="tns:getSettingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setSetting">
+      <wsdl:input message="tns:setSettingSoapIn" />
+      <wsdl:output message="tns:setSettingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="addSwitchListTemplate">
+      <wsdl:input message="tns:addSwitchListTemplateSoapIn" />
+      <wsdl:output message="tns:addSwitchListTemplateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateSwitchListTemplate">
+      <wsdl:input message="tns:updateSwitchListTemplateSoapIn" />
+      <wsdl:output message="tns:updateSwitchListTemplateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteSwitchListTemplate">
+      <wsdl:input message="tns:deleteSwitchListTemplateSoapIn" />
+      <wsdl:output message="tns:deleteSwitchListTemplateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listAllSwitchListTemplates">
+      <wsdl:input message="tns:listAllSwitchListTemplatesSoapIn" />
+      <wsdl:output message="tns:listAllSwitchListTemplatesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSwitchListTemplate">
+      <wsdl:input message="tns:getSwitchListTemplateSoapIn" />
+      <wsdl:output message="tns:getSwitchListTemplateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="addArrCode">
+      <wsdl:input message="tns:addArrCodeSoapIn" />
+      <wsdl:output message="tns:addArrCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateArrCode">
+      <wsdl:input message="tns:updateArrCodeSoapIn" />
+      <wsdl:output message="tns:updateArrCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteArrCode">
+      <wsdl:input message="tns:deleteArrCodeSoapIn" />
+      <wsdl:output message="tns:deleteArrCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getArrCode">
+      <wsdl:input message="tns:getArrCodeSoapIn" />
+      <wsdl:output message="tns:getArrCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listAllArrCode">
+      <wsdl:input message="tns:listAllArrCodeSoapIn" />
+      <wsdl:output message="tns:listAllArrCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="addConsigneeShipper">
+      <wsdl:input message="tns:addConsigneeShipperSoapIn" />
+      <wsdl:output message="tns:addConsigneeShipperSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateConsigneeShipper">
+      <wsdl:input message="tns:updateConsigneeShipperSoapIn" />
+      <wsdl:output message="tns:updateConsigneeShipperSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteConsigneeShipper">
+      <wsdl:input message="tns:deleteConsigneeShipperSoapIn" />
+      <wsdl:output message="tns:deleteConsigneeShipperSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getConsigneeShipper">
+      <wsdl:input message="tns:getConsigneeShipperSoapIn" />
+      <wsdl:output message="tns:getConsigneeShipperSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listConsigneeShipper">
+      <wsdl:input message="tns:listConsigneeShipperSoapIn" />
+      <wsdl:output message="tns:listConsigneeShipperSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="addBillOfLading">
+      <wsdl:input message="tns:addBillOfLadingSoapIn" />
+      <wsdl:output message="tns:addBillOfLadingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateBillOfLading">
+      <wsdl:input message="tns:updateBillOfLadingSoapIn" />
+      <wsdl:output message="tns:updateBillOfLadingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBillOfLading">
+      <wsdl:input message="tns:getBillOfLadingSoapIn" />
+      <wsdl:output message="tns:getBillOfLadingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listBillOfLading">
+      <wsdl:input message="tns:listBillOfLadingSoapIn" />
+      <wsdl:output message="tns:listBillOfLadingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteBillOfLading">
+      <wsdl:input message="tns:deleteBillOfLadingSoapIn" />
+      <wsdl:output message="tns:deleteBillOfLadingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="addBillOfLadingPath">
+      <wsdl:input message="tns:addBillOfLadingPathSoapIn" />
+      <wsdl:output message="tns:addBillOfLadingPathSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateBillOfLadingPath">
+      <wsdl:input message="tns:updateBillOfLadingPathSoapIn" />
+      <wsdl:output message="tns:updateBillOfLadingPathSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteBillOfLadingPath">
+      <wsdl:input message="tns:deleteBillOfLadingPathSoapIn" />
+      <wsdl:output message="tns:deleteBillOfLadingPathSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listBillOfLadingPath">
+      <wsdl:input message="tns:listBillOfLadingPathSoapIn" />
+      <wsdl:output message="tns:listBillOfLadingPathSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="addBillOfLadingCartypeAttribute">
+      <wsdl:input message="tns:addBillOfLadingCartypeAttributeSoapIn" />
+      <wsdl:output message="tns:addBillOfLadingCartypeAttributeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listBillOfLadingCartypeAttribute">
+      <wsdl:input message="tns:listBillOfLadingCartypeAttributeSoapIn" />
+      <wsdl:output message="tns:listBillOfLadingCartypeAttributeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteBillOfLadingCartypeAttribute">
+      <wsdl:input message="tns:deleteBillOfLadingCartypeAttributeSoapIn" />
+      <wsdl:output message="tns:deleteBillOfLadingCartypeAttributeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="addWaybill">
+      <wsdl:input message="tns:addWaybillSoapIn" />
+      <wsdl:output message="tns:addWaybillSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateWaybill">
+      <wsdl:input message="tns:updateWaybillSoapIn" />
+      <wsdl:output message="tns:updateWaybillSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getWaybill">
+      <wsdl:input message="tns:getWaybillSoapIn" />
+      <wsdl:output message="tns:getWaybillSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ICoreSoap" type="tns:ICoreSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="addCarTypeAttribute">
+      <soap:operation soapAction="http://tempuri.org/addCarTypeAttribute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateCarTypeAttribute">
+      <soap:operation soapAction="http://tempuri.org/updateCarTypeAttribute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listCarTypeAttributes">
+      <soap:operation soapAction="http://tempuri.org/listCarTypeAttributes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCarTypeAttribute">
+      <soap:operation soapAction="http://tempuri.org/deleteCarTypeAttribute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCarTypeAttributeByCarType">
+      <soap:operation soapAction="http://tempuri.org/deleteCarTypeAttributeByCarType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addCarType">
+      <soap:operation soapAction="http://tempuri.org/addCarType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateCarType">
+      <soap:operation soapAction="http://tempuri.org/updateCarType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCarType">
+      <soap:operation soapAction="http://tempuri.org/getCarType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCarType">
+      <soap:operation soapAction="http://tempuri.org/deleteCarType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listCarTypes">
+      <soap:operation soapAction="http://tempuri.org/listCarTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addRollingStockAttribute">
+      <soap:operation soapAction="http://tempuri.org/addRollingStockAttribute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteRollingStockAttribute">
+      <soap:operation soapAction="http://tempuri.org/deleteRollingStockAttribute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteAllRollingStockAttribute">
+      <soap:operation soapAction="http://tempuri.org/deleteAllRollingStockAttribute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listRollingStockAttribute">
+      <soap:operation soapAction="http://tempuri.org/listRollingStockAttribute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addRollingStock">
+      <soap:operation soapAction="http://tempuri.org/addRollingStock" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateRollingstock">
+      <soap:operation soapAction="http://tempuri.org/updateRollingstock" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRollingStock">
+      <soap:operation soapAction="http://tempuri.org/getRollingStock" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteRollingStock">
+      <soap:operation soapAction="http://tempuri.org/deleteRollingStock" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listRollingStockForWaybill">
+      <soap:operation soapAction="http://tempuri.org/listRollingStockForWaybill" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listAllRollingStock">
+      <soap:operation soapAction="http://tempuri.org/listAllRollingStock" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addLocation">
+      <soap:operation soapAction="http://tempuri.org/addLocation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateLocation">
+      <soap:operation soapAction="http://tempuri.org/updateLocation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLocation">
+      <soap:operation soapAction="http://tempuri.org/getLocation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteLocation">
+      <soap:operation soapAction="http://tempuri.org/deleteLocation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listLocations">
+      <soap:operation soapAction="http://tempuri.org/listLocations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSetting">
+      <soap:operation soapAction="http://tempuri.org/getSetting" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setSetting">
+      <soap:operation soapAction="http://tempuri.org/setSetting" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addSwitchListTemplate">
+      <soap:operation soapAction="http://tempuri.org/addSwitchListTemplate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateSwitchListTemplate">
+      <soap:operation soapAction="http://tempuri.org/updateSwitchListTemplate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteSwitchListTemplate">
+      <soap:operation soapAction="http://tempuri.org/deleteSwitchListTemplate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listAllSwitchListTemplates">
+      <soap:operation soapAction="http://tempuri.org/listAllSwitchListTemplates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSwitchListTemplate">
+      <soap:operation soapAction="http://tempuri.org/getSwitchListTemplate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addArrCode">
+      <soap:operation soapAction="http://tempuri.org/addArrCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateArrCode">
+      <soap:operation soapAction="http://tempuri.org/updateArrCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteArrCode">
+      <soap:operation soapAction="http://tempuri.org/deleteArrCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getArrCode">
+      <soap:operation soapAction="http://tempuri.org/getArrCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listAllArrCode">
+      <soap:operation soapAction="http://tempuri.org/listAllArrCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addConsigneeShipper">
+      <soap:operation soapAction="http://tempuri.org/addConsigneeShipper" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateConsigneeShipper">
+      <soap:operation soapAction="http://tempuri.org/updateConsigneeShipper" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteConsigneeShipper">
+      <soap:operation soapAction="http://tempuri.org/deleteConsigneeShipper" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getConsigneeShipper">
+      <soap:operation soapAction="http://tempuri.org/getConsigneeShipper" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listConsigneeShipper">
+      <soap:operation soapAction="http://tempuri.org/listConsigneeShipper" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addBillOfLading">
+      <soap:operation soapAction="http://tempuri.org/addBillOfLading" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateBillOfLading">
+      <soap:operation soapAction="http://tempuri.org/updateBillOfLading" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBillOfLading">
+      <soap:operation soapAction="http://tempuri.org/getBillOfLading" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listBillOfLading">
+      <soap:operation soapAction="http://tempuri.org/listBillOfLading" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteBillOfLading">
+      <soap:operation soapAction="http://tempuri.org/deleteBillOfLading" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addBillOfLadingPath">
+      <soap:operation soapAction="http://tempuri.org/addBillOfLadingPath" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateBillOfLadingPath">
+      <soap:operation soapAction="http://tempuri.org/updateBillOfLadingPath" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteBillOfLadingPath">
+      <soap:operation soapAction="http://tempuri.org/deleteBillOfLadingPath" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listBillOfLadingPath">
+      <soap:operation soapAction="http://tempuri.org/listBillOfLadingPath" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addBillOfLadingCartypeAttribute">
+      <soap:operation soapAction="http://tempuri.org/addBillOfLadingCartypeAttribute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listBillOfLadingCartypeAttribute">
+      <soap:operation soapAction="http://tempuri.org/listBillOfLadingCartypeAttribute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteBillOfLadingCartypeAttribute">
+      <soap:operation soapAction="http://tempuri.org/deleteBillOfLadingCartypeAttribute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addWaybill">
+      <soap:operation soapAction="http://tempuri.org/addWaybill" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateWaybill">
+      <soap:operation soapAction="http://tempuri.org/updateWaybill" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getWaybill">
+      <soap:operation soapAction="http://tempuri.org/getWaybill" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ICoreSoap12" type="tns:ICoreSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="addCarTypeAttribute">
+      <soap12:operation soapAction="http://tempuri.org/addCarTypeAttribute" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateCarTypeAttribute">
+      <soap12:operation soapAction="http://tempuri.org/updateCarTypeAttribute" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listCarTypeAttributes">
+      <soap12:operation soapAction="http://tempuri.org/listCarTypeAttributes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCarTypeAttribute">
+      <soap12:operation soapAction="http://tempuri.org/deleteCarTypeAttribute" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCarTypeAttributeByCarType">
+      <soap12:operation soapAction="http://tempuri.org/deleteCarTypeAttributeByCarType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addCarType">
+      <soap12:operation soapAction="http://tempuri.org/addCarType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateCarType">
+      <soap12:operation soapAction="http://tempuri.org/updateCarType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCarType">
+      <soap12:operation soapAction="http://tempuri.org/getCarType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCarType">
+      <soap12:operation soapAction="http://tempuri.org/deleteCarType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listCarTypes">
+      <soap12:operation soapAction="http://tempuri.org/listCarTypes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addRollingStockAttribute">
+      <soap12:operation soapAction="http://tempuri.org/addRollingStockAttribute" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteRollingStockAttribute">
+      <soap12:operation soapAction="http://tempuri.org/deleteRollingStockAttribute" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteAllRollingStockAttribute">
+      <soap12:operation soapAction="http://tempuri.org/deleteAllRollingStockAttribute" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listRollingStockAttribute">
+      <soap12:operation soapAction="http://tempuri.org/listRollingStockAttribute" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addRollingStock">
+      <soap12:operation soapAction="http://tempuri.org/addRollingStock" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateRollingstock">
+      <soap12:operation soapAction="http://tempuri.org/updateRollingstock" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRollingStock">
+      <soap12:operation soapAction="http://tempuri.org/getRollingStock" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteRollingStock">
+      <soap12:operation soapAction="http://tempuri.org/deleteRollingStock" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listRollingStockForWaybill">
+      <soap12:operation soapAction="http://tempuri.org/listRollingStockForWaybill" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listAllRollingStock">
+      <soap12:operation soapAction="http://tempuri.org/listAllRollingStock" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addLocation">
+      <soap12:operation soapAction="http://tempuri.org/addLocation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateLocation">
+      <soap12:operation soapAction="http://tempuri.org/updateLocation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLocation">
+      <soap12:operation soapAction="http://tempuri.org/getLocation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteLocation">
+      <soap12:operation soapAction="http://tempuri.org/deleteLocation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listLocations">
+      <soap12:operation soapAction="http://tempuri.org/listLocations" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSetting">
+      <soap12:operation soapAction="http://tempuri.org/getSetting" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setSetting">
+      <soap12:operation soapAction="http://tempuri.org/setSetting" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addSwitchListTemplate">
+      <soap12:operation soapAction="http://tempuri.org/addSwitchListTemplate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateSwitchListTemplate">
+      <soap12:operation soapAction="http://tempuri.org/updateSwitchListTemplate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteSwitchListTemplate">
+      <soap12:operation soapAction="http://tempuri.org/deleteSwitchListTemplate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listAllSwitchListTemplates">
+      <soap12:operation soapAction="http://tempuri.org/listAllSwitchListTemplates" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSwitchListTemplate">
+      <soap12:operation soapAction="http://tempuri.org/getSwitchListTemplate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addArrCode">
+      <soap12:operation soapAction="http://tempuri.org/addArrCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateArrCode">
+      <soap12:operation soapAction="http://tempuri.org/updateArrCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteArrCode">
+      <soap12:operation soapAction="http://tempuri.org/deleteArrCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getArrCode">
+      <soap12:operation soapAction="http://tempuri.org/getArrCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listAllArrCode">
+      <soap12:operation soapAction="http://tempuri.org/listAllArrCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addConsigneeShipper">
+      <soap12:operation soapAction="http://tempuri.org/addConsigneeShipper" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateConsigneeShipper">
+      <soap12:operation soapAction="http://tempuri.org/updateConsigneeShipper" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteConsigneeShipper">
+      <soap12:operation soapAction="http://tempuri.org/deleteConsigneeShipper" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getConsigneeShipper">
+      <soap12:operation soapAction="http://tempuri.org/getConsigneeShipper" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listConsigneeShipper">
+      <soap12:operation soapAction="http://tempuri.org/listConsigneeShipper" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addBillOfLading">
+      <soap12:operation soapAction="http://tempuri.org/addBillOfLading" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateBillOfLading">
+      <soap12:operation soapAction="http://tempuri.org/updateBillOfLading" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBillOfLading">
+      <soap12:operation soapAction="http://tempuri.org/getBillOfLading" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listBillOfLading">
+      <soap12:operation soapAction="http://tempuri.org/listBillOfLading" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteBillOfLading">
+      <soap12:operation soapAction="http://tempuri.org/deleteBillOfLading" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addBillOfLadingPath">
+      <soap12:operation soapAction="http://tempuri.org/addBillOfLadingPath" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateBillOfLadingPath">
+      <soap12:operation soapAction="http://tempuri.org/updateBillOfLadingPath" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteBillOfLadingPath">
+      <soap12:operation soapAction="http://tempuri.org/deleteBillOfLadingPath" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listBillOfLadingPath">
+      <soap12:operation soapAction="http://tempuri.org/listBillOfLadingPath" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addBillOfLadingCartypeAttribute">
+      <soap12:operation soapAction="http://tempuri.org/addBillOfLadingCartypeAttribute" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listBillOfLadingCartypeAttribute">
+      <soap12:operation soapAction="http://tempuri.org/listBillOfLadingCartypeAttribute" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteBillOfLadingCartypeAttribute">
+      <soap12:operation soapAction="http://tempuri.org/deleteBillOfLadingCartypeAttribute" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addWaybill">
+      <soap12:operation soapAction="http://tempuri.org/addWaybill" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateWaybill">
+      <soap12:operation soapAction="http://tempuri.org/updateWaybill" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getWaybill">
+      <soap12:operation soapAction="http://tempuri.org/getWaybill" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ICore">
+    <wsdl:port name="ICoreSoap" binding="tns:ICoreSoap">
+      <soap:address location="http://localhost:49225/ICore.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ICoreSoap12" binding="tns:ICoreSoap12">
+      <soap12:address location="http://localhost:49225/ICore.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

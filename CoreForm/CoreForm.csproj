@@ -1,0 +1,462 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BAD8900B-FE82-4F01-9F3C-42D5C3AB2423}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CoreForm</RootNamespace>
+    <AssemblyName>CoreForm</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ArrCodes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ArrCodes.Designer.cs">
+      <DependentUpon>ArrCodes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cars.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cars.Designer.cs">
+      <DependentUpon>Cars.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CarType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CarType.Designer.cs">
+      <DependentUpon>CarType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clock.Designer.cs">
+      <DependentUpon>Clock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConsigneeShipper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsigneeShipper.Designer.cs">
+      <DependentUpon>ConsigneeShipper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Location.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Location.Designer.cs">
+      <DependentUpon>Location.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RollingStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RollingStock.Designer.cs">
+      <DependentUpon>RollingStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\CoreWebService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="SetupSwitchList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SetupSwitchList.Designer.cs">
+      <DependentUpon>SetupSwitchList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SwitchList.Designer.cs">
+      <DependentUpon>SwitchList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Waybill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Waybill.Designer.cs">
+      <DependentUpon>Waybill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BillOfLading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BillOfLading.Designer.cs">
+      <DependentUpon>BillOfLading.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ArrCodes.resx">
+      <DependentUpon>ArrCodes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cars.resx">
+      <DependentUpon>Cars.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CarType.resx">
+      <DependentUpon>CarType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clock.resx">
+      <DependentUpon>Clock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsigneeShipper.resx">
+      <DependentUpon>ConsigneeShipper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Location.resx">
+      <DependentUpon>Location.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="RollingStock.resx">
+      <DependentUpon>RollingStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SetupSwitchList.resx">
+      <DependentUpon>SetupSwitchList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchList.resx">
+      <DependentUpon>SwitchList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Waybill.resx">
+      <DependentUpon>Waybill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BillOfLading.resx">
+      <DependentUpon>BillOfLading.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.addArrCodeResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.addBillOfLadingCartypeAttributeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.addBillOfLadingPathResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.addBillOfLadingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.addCarTypeAttributeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.addCarTypeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.addConsigneeShipperResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.addLocationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.addRollingStockAttributeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.addRollingStockResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.addSwitchListTemplateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.addWaybillResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.ArrCodeListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.ArrCodeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.BillOfLadingCarTypeAttributesListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.BillOfLadingCarTypeAttributesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.BillOfLadingListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.BillOfLadingPathListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.BillOfLadingPathResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.BillOfLadingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.CarTypeAttributeListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.CarTypeAttributeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.CarTypeListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.CarTypeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.ConsigneeShipperListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.ConsigneeShipperResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.deleteAllRollingStockAttributeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.deleteArrCodeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.deleteBillOfLadingCartypeAttributeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.deleteBillOfLadingPathResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.deleteBillOfLadingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.deleteCarTypeAttributeByCarTypeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.deleteCarTypeAttributeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.deleteCarTypeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.deleteConsigneeShipperResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.deleteLocationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.deleteRollingStockAttributeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.deleteRollingStockResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.getArrCodeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.getBillOfLadingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.getCarTypeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.getConsigneeShipperResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.getLocationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.getRollingStockResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.getSettingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.getSwitchListTemplateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.getWaybillResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.listAllArrCodeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.listAllRollingStockResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.listAllSwitchListTemplatesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.listBillOfLadingCartypeAttributeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.listBillOfLadingPathResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.listBillOfLadingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.listCarTypeAttributesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.listCarTypesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.listConsigneeShipperResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.listLocationsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.listRollingStockAttributeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.listRollingStockForWaybillResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.LocationListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.LocationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.RollingStockAttributeListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.RollingStockAttributeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.RollingStockListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.RollingStockResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.setSettingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.Setting.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.SwitchListsLayout.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.updateArrCodeResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.updateBillOfLadingPathResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.updateBillOfLadingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.updateCarTypeAttributeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.updateCarTypeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.updateConsigneeShipperResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.updateLocationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.updateRollingstockResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.updateSwitchListTemplateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.updateWaybillResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\CoreForm.CoreWebService.WaybillResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CoreWebService\ICore.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\CoreWebService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CoreWebService\ICore.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CoreWebService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CoreWebService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CoreWebService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="images\Form-818_A-Std-Small-Ft-Swi.jpg" />
+    <None Include="Resources\train-engine-and-caboose-clipart-trn11.gif" />
+    <None Include="Resources\hopper-clipart-trn14.gif" />
+    <None Include="Resources\carType.png" />
+    <None Include="Resources\location.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

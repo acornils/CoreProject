@@ -1,0 +1,19 @@
+c:\users\aaron\documents\visual studio 2013\Projects\CoreProject\CoreProject\bin\CoreWebService.dll.config
+c:\users\aaron\documents\visual studio 2013\Projects\CoreProject\CoreProject\bin\CoreWebService.dll
+c:\users\aaron\documents\visual studio 2013\Projects\CoreProject\CoreProject\bin\CoreWebService.pdb
+c:\users\aaron\documents\visual studio 2013\Projects\CoreProject\CoreProject\bin\SubSonic.Core.dll
+c:\users\aaron\documents\visual studio 2013\Projects\CoreProject\CoreProject\obj\Debug\CoreWebService.csprojResolveAssemblyReference.cache
+c:\users\aaron\documents\visual studio 2013\Projects\CoreProject\CoreProject\obj\Debug\CoreWebService.dll
+c:\users\aaron\documents\visual studio 2013\Projects\CoreProject\CoreProject\obj\Debug\CoreWebService.pdb
+C:\Users\Aaron\Documents\Visual Studio 2013\Projects\CoreProject\CoreWebService\bin\CoreWebService.dll.config
+C:\Users\Aaron\Documents\Visual Studio 2013\Projects\CoreProject\CoreWebService\bin\CoreWebService.dll
+C:\Users\Aaron\Documents\Visual Studio 2013\Projects\CoreProject\CoreWebService\bin\CoreWebService.pdb
+C:\Users\Aaron\Documents\Visual Studio 2013\Projects\CoreProject\CoreWebService\bin\SubSonic.Core.dll
+C:\Users\Aaron\Documents\Visual Studio 2013\Projects\CoreProject\CoreWebService\obj\Debug\CoreWebService.dll
+C:\Users\Aaron\Documents\Visual Studio 2013\Projects\CoreProject\CoreWebService\obj\Debug\CoreWebService.pdb
+C:\GitRepo\CoreProject\CoreWebService\bin\CoreWebService.dll.config
+C:\GitRepo\CoreProject\CoreWebService\bin\CoreWebService.dll
+C:\GitRepo\CoreProject\CoreWebService\bin\CoreWebService.pdb
+C:\GitRepo\CoreProject\CoreWebService\obj\Debug\CoreWebService.csproj.CoreCompileInputs.cache
+C:\GitRepo\CoreProject\CoreWebService\obj\Debug\CoreWebService.dll
+C:\GitRepo\CoreProject\CoreWebService\obj\Debug\CoreWebService.pdb
