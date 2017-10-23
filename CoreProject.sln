@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreForm", "CoreForm\CoreForm.csproj", "{BAD8900B-FE82-4F01-9F3C-42D5C3AB2423}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1203D023-DC0B-46BD-8EE2-3440D9CED75E} = {1203D023-DC0B-46BD-8EE2-3440D9CED75E}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreWebService", "CoreWebService\CoreWebService.csproj", "{1203D023-DC0B-46BD-8EE2-3440D9CED75E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BAD8900B-FE82-4F01-9F3C-42D5C3AB2423}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAD8900B-FE82-4F01-9F3C-42D5C3AB2423}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAD8900B-FE82-4F01-9F3C-42D5C3AB2423}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAD8900B-FE82-4F01-9F3C-42D5C3AB2423}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1203D023-DC0B-46BD-8EE2-3440D9CED75E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1203D023-DC0B-46BD-8EE2-3440D9CED75E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1203D023-DC0B-46BD-8EE2-3440D9CED75E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1203D023-DC0B-46BD-8EE2-3440D9CED75E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

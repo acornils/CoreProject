@@ -1,0 +1,39 @@
+C:\Users\Aaron\Documents\Visual Studio 2013\Projects\CoreProject\CoreForm\bin\Debug\CoreForm.exe.config
+C:\Users\Aaron\Documents\Visual Studio 2013\Projects\CoreProject\CoreForm\bin\Debug\CoreForm.exe
+C:\Users\Aaron\Documents\Visual Studio 2013\Projects\CoreProject\CoreForm\bin\Debug\CoreForm.pdb
+C:\Users\Aaron\Documents\Visual Studio 2013\Projects\CoreProject\CoreForm\obj\Debug\CoreForm.ArrCodes.resources
+C:\Users\Aaron\Documents\Visual Studio 2013\Projects\CoreProject\CoreForm\obj\Debug\CoreForm.Cars.resources
+C:\Users\Aaron\Documents\Visual Studio 2013\Projects\CoreProject\CoreForm\obj\Debug\CoreForm.CarType.resources
+C:\Users\Aaron\Documents\Visual Studio 2013\Projects\CoreProject\CoreForm\obj\Debug\CoreForm.Clock.resources
+C:\Users\Aaron\Documents\Visual Studio 2013\Projects\CoreProject\CoreForm\obj\Debug\CoreForm.ConsigneeShipper.resources
+C:\Users\Aaron\Documents\Visual Studio 2013\Projects\CoreProject\CoreForm\obj\Debug\CoreForm.Form1.resources
+C:\Users\Aaron\Documents\Visual Studio 2013\Projects\CoreProject\CoreForm\obj\Debug\CoreForm.Location.resources
+C:\Users\Aaron\Documents\Visual Studio 2013\Projects\CoreProject\CoreForm\obj\Debug\CoreForm.Properties.Resources.resources
+C:\Users\Aaron\Documents\Visual Studio 2013\Projects\CoreProject\CoreForm\obj\Debug\CoreForm.RollingStock.resources
+C:\Users\Aaron\Documents\Visual Studio 2013\Projects\CoreProject\CoreForm\obj\Debug\CoreForm.SetupSwitchList.resources
+C:\Users\Aaron\Documents\Visual Studio 2013\Projects\CoreProject\CoreForm\obj\Debug\CoreForm.SwitchList.resources
+C:\Users\Aaron\Documents\Visual Studio 2013\Projects\CoreProject\CoreForm\obj\Debug\CoreForm.Waybill.resources
+C:\Users\Aaron\Documents\Visual Studio 2013\Projects\CoreProject\CoreForm\obj\Debug\CoreForm.WaybillTemplates.resources
+C:\Users\Aaron\Documents\Visual Studio 2013\Projects\CoreProject\CoreForm\obj\Debug\CoreForm.csproj.GenerateResource.Cache
+C:\Users\Aaron\Documents\Visual Studio 2013\Projects\CoreProject\CoreForm\obj\Debug\CoreForm.exe
+C:\Users\Aaron\Documents\Visual Studio 2013\Projects\CoreProject\CoreForm\obj\Debug\CoreForm.pdb
+C:\GitRepo\CoreProject\CoreForm\bin\Debug\CoreForm.exe.config
+C:\GitRepo\CoreProject\CoreForm\bin\Debug\CoreForm.exe
+C:\GitRepo\CoreProject\CoreForm\bin\Debug\CoreForm.pdb
+C:\GitRepo\CoreProject\CoreForm\obj\Debug\CoreForm.ArrCodes.resources
+C:\GitRepo\CoreProject\CoreForm\obj\Debug\CoreForm.Cars.resources
+C:\GitRepo\CoreProject\CoreForm\obj\Debug\CoreForm.CarType.resources
+C:\GitRepo\CoreProject\CoreForm\obj\Debug\CoreForm.Clock.resources
+C:\GitRepo\CoreProject\CoreForm\obj\Debug\CoreForm.ConsigneeShipper.resources
+C:\GitRepo\CoreProject\CoreForm\obj\Debug\CoreForm.Form1.resources
+C:\GitRepo\CoreProject\CoreForm\obj\Debug\CoreForm.Location.resources
+C:\GitRepo\CoreProject\CoreForm\obj\Debug\CoreForm.Properties.Resources.resources
+C:\GitRepo\CoreProject\CoreForm\obj\Debug\CoreForm.RollingStock.resources
+C:\GitRepo\CoreProject\CoreForm\obj\Debug\CoreForm.SetupSwitchList.resources
+C:\GitRepo\CoreProject\CoreForm\obj\Debug\CoreForm.SwitchList.resources
+C:\GitRepo\CoreProject\CoreForm\obj\Debug\CoreForm.Waybill.resources
+C:\GitRepo\CoreProject\CoreForm\obj\Debug\CoreForm.csproj.GenerateResource.Cache
+C:\GitRepo\CoreProject\CoreForm\obj\Debug\CoreForm.csproj.CoreCompileInputs.cache
+C:\GitRepo\CoreProject\CoreForm\obj\Debug\CoreForm.exe
+C:\GitRepo\CoreProject\CoreForm\obj\Debug\CoreForm.pdb
+C:\GitRepo\CoreProject\CoreForm\obj\Debug\CoreForm.BillOfLading.resources
