@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.listBoxBillOfLading = new System.Windows.Forms.ListBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxConsignee = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -59,8 +57,6 @@
             this.checkBoxIsLiveStock = new System.Windows.Forms.CheckBox();
             this.checkBoxReturnEmpty = new System.Windows.Forms.CheckBox();
             this.checkBoxReverseRoute = new System.Windows.Forms.CheckBox();
-            this.comboBoxNextWaybill = new System.Windows.Forms.ComboBox();
-            this.checkBoxNextWaybill = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.numericUpDownCarsPerDay = new System.Windows.Forms.NumericUpDown();
@@ -83,22 +79,7 @@
             this.listBoxBillOfLading.Name = "listBoxBillOfLading";
             this.listBoxBillOfLading.Size = new System.Drawing.Size(228, 459);
             this.listBoxBillOfLading.TabIndex = 0;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(13, 13);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 1;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // textBoxSearch
-            // 
-            this.textBoxSearch.Location = new System.Drawing.Point(141, 13);
-            this.textBoxSearch.Name = "textBoxSearch";
-            this.textBoxSearch.Size = new System.Drawing.Size(100, 20);
-            this.textBoxSearch.TabIndex = 2;
+            this.listBoxBillOfLading.SelectedIndexChanged += new System.EventHandler(this.listBoxBillOfLading_SelectedIndexChanged_1);
             // 
             // label1
             // 
@@ -163,6 +144,11 @@
             this.numericUpDownRequestedLength.Name = "numericUpDownRequestedLength";
             this.numericUpDownRequestedLength.Size = new System.Drawing.Size(120, 20);
             this.numericUpDownRequestedLength.TabIndex = 9;
+            this.numericUpDownRequestedLength.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
             // 
             // label4
             // 
@@ -356,6 +342,7 @@
             this.checkBoxReturnEmpty.TabIndex = 29;
             this.checkBoxReturnEmpty.Text = "Return Empty";
             this.checkBoxReturnEmpty.UseVisualStyleBackColor = true;
+            this.checkBoxReturnEmpty.CheckedChanged += new System.EventHandler(this.checkBoxReturnEmpty_CheckedChanged);
             // 
             // checkBoxReverseRoute
             // 
@@ -366,24 +353,7 @@
             this.checkBoxReverseRoute.TabIndex = 30;
             this.checkBoxReverseRoute.Text = "Reverse Route";
             this.checkBoxReverseRoute.UseVisualStyleBackColor = true;
-            // 
-            // comboBoxNextWaybill
-            // 
-            this.comboBoxNextWaybill.FormattingEnabled = true;
-            this.comboBoxNextWaybill.Location = new System.Drawing.Point(601, 462);
-            this.comboBoxNextWaybill.Name = "comboBoxNextWaybill";
-            this.comboBoxNextWaybill.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxNextWaybill.TabIndex = 32;
-            // 
-            // checkBoxNextWaybill
-            // 
-            this.checkBoxNextWaybill.AutoSize = true;
-            this.checkBoxNextWaybill.Location = new System.Drawing.Point(600, 437);
-            this.checkBoxNextWaybill.Name = "checkBoxNextWaybill";
-            this.checkBoxNextWaybill.Size = new System.Drawing.Size(85, 17);
-            this.checkBoxNextWaybill.TabIndex = 33;
-            this.checkBoxNextWaybill.Text = "Next Waybill";
-            this.checkBoxNextWaybill.UseVisualStyleBackColor = true;
+            this.checkBoxReverseRoute.CheckedChanged += new System.EventHandler(this.checkBoxReverseRoute_CheckedChanged);
             // 
             // label8
             // 
@@ -444,6 +414,11 @@
             this.numericUpDownLoadTime.Name = "numericUpDownLoadTime";
             this.numericUpDownLoadTime.Size = new System.Drawing.Size(120, 20);
             this.numericUpDownLoadTime.TabIndex = 40;
+            this.numericUpDownLoadTime.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // numericUpDownUnloadTime
             // 
@@ -451,6 +426,11 @@
             this.numericUpDownUnloadTime.Name = "numericUpDownUnloadTime";
             this.numericUpDownUnloadTime.Size = new System.Drawing.Size(120, 20);
             this.numericUpDownUnloadTime.TabIndex = 41;
+            this.numericUpDownUnloadTime.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // BillOfLading
             // 
@@ -465,8 +445,6 @@
             this.Controls.Add(this.numericUpDownCarsPerDay);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.checkBoxNextWaybill);
-            this.Controls.Add(this.comboBoxNextWaybill);
             this.Controls.Add(this.checkBoxReverseRoute);
             this.Controls.Add(this.checkBoxReturnEmpty);
             this.Controls.Add(this.checkBoxIsLiveStock);
@@ -495,12 +473,11 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBoxConsignee);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBoxSearch);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.listBoxBillOfLading);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "BillOfLading";
             this.Text = "Bill Of Lading";
+            this.Load += new System.EventHandler(this.BillOfLading_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRequestedLength)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCapacityTons)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCarsPerDay)).EndInit();
@@ -514,8 +491,6 @@
         #endregion
 
         private System.Windows.Forms.ListBox listBoxBillOfLading;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBoxConsignee;
         private System.Windows.Forms.Label label2;
@@ -544,8 +519,6 @@
         private System.Windows.Forms.CheckBox checkBoxIsLiveStock;
         private System.Windows.Forms.CheckBox checkBoxReturnEmpty;
         private System.Windows.Forms.CheckBox checkBoxReverseRoute;
-        private System.Windows.Forms.ComboBox comboBoxNextWaybill;
-        private System.Windows.Forms.CheckBox checkBoxNextWaybill;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.NumericUpDown numericUpDownCarsPerDay;

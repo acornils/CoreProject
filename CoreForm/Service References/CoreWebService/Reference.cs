@@ -2649,25 +2649,17 @@ namespace CoreForm.CoreWebService {
         
         private System.Nullable<bool> isReturnEmptyField;
         
-        private System.Nullable<bool> isNextBillOfLadingField;
-        
-        private System.Nullable<int> nextBillOfLadingIDField;
-        
         private System.Nullable<decimal> requestedCarsPerDayField;
         
         private System.Nullable<int> timeToUnloadField;
         
         private System.Nullable<int> timeToLoadField;
         
-        private System.Nullable<bool> isTemplateActiveField;
-        
         private System.Nullable<bool> isDeletedField;
         
-        private System.Nullable<bool> isTemplateField;
+        private System.Nullable<System.DateTime> createdOnField;
         
-        private System.Nullable<System.DateTime> CreatedOnField;
-        
-        private System.Nullable<int> RollingStockIDField;
+        private System.Nullable<System.DateTime> modifiedOnField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -2914,32 +2906,6 @@ namespace CoreForm.CoreWebService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=18)]
-        public System.Nullable<bool> isNextBillOfLading {
-            get {
-                return this.isNextBillOfLadingField;
-            }
-            set {
-                if ((this.isNextBillOfLadingField.Equals(value) != true)) {
-                    this.isNextBillOfLadingField = value;
-                    this.RaisePropertyChanged("isNextBillOfLading");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=19)]
-        public System.Nullable<int> nextBillOfLadingID {
-            get {
-                return this.nextBillOfLadingIDField;
-            }
-            set {
-                if ((this.nextBillOfLadingIDField.Equals(value) != true)) {
-                    this.nextBillOfLadingIDField = value;
-                    this.RaisePropertyChanged("nextBillOfLadingID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=20)]
         public System.Nullable<decimal> requestedCarsPerDay {
             get {
                 return this.requestedCarsPerDayField;
@@ -2952,7 +2918,7 @@ namespace CoreForm.CoreWebService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=21)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=19)]
         public System.Nullable<int> timeToUnload {
             get {
                 return this.timeToUnloadField;
@@ -2965,7 +2931,7 @@ namespace CoreForm.CoreWebService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=22)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=20)]
         public System.Nullable<int> timeToLoad {
             get {
                 return this.timeToLoadField;
@@ -2978,20 +2944,7 @@ namespace CoreForm.CoreWebService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=23)]
-        public System.Nullable<bool> isTemplateActive {
-            get {
-                return this.isTemplateActiveField;
-            }
-            set {
-                if ((this.isTemplateActiveField.Equals(value) != true)) {
-                    this.isTemplateActiveField = value;
-                    this.RaisePropertyChanged("isTemplateActive");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=24)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=21)]
         public System.Nullable<bool> isDeleted {
             get {
                 return this.isDeletedField;
@@ -3004,41 +2957,28 @@ namespace CoreForm.CoreWebService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=25)]
-        public System.Nullable<bool> isTemplate {
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=22)]
+        public System.Nullable<System.DateTime> createdOn {
             get {
-                return this.isTemplateField;
+                return this.createdOnField;
             }
             set {
-                if ((this.isTemplateField.Equals(value) != true)) {
-                    this.isTemplateField = value;
-                    this.RaisePropertyChanged("isTemplate");
+                if ((this.createdOnField.Equals(value) != true)) {
+                    this.createdOnField = value;
+                    this.RaisePropertyChanged("createdOn");
                 }
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=26)]
-        public System.Nullable<System.DateTime> CreatedOn {
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=23)]
+        public System.Nullable<System.DateTime> modifiedOn {
             get {
-                return this.CreatedOnField;
+                return this.modifiedOnField;
             }
             set {
-                if ((this.CreatedOnField.Equals(value) != true)) {
-                    this.CreatedOnField = value;
-                    this.RaisePropertyChanged("CreatedOn");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=27)]
-        public System.Nullable<int> RollingStockID {
-            get {
-                return this.RollingStockIDField;
-            }
-            set {
-                if ((this.RollingStockIDField.Equals(value) != true)) {
-                    this.RollingStockIDField = value;
-                    this.RaisePropertyChanged("RollingStockID");
+                if ((this.modifiedOnField.Equals(value) != true)) {
+                    this.modifiedOnField = value;
+                    this.RaisePropertyChanged("modifiedOn");
                 }
             }
         }
@@ -3732,6 +3672,12 @@ namespace CoreForm.CoreWebService {
         
         private System.Nullable<int> billOfLadingIDField;
         
+        private System.Nullable<int> consigneeIDField;
+        
+        private System.Nullable<int> shipperIDField;
+        
+        private System.Nullable<int> assignedRollingStockIDField;
+        
         private System.Nullable<System.DateTime> loadedAtField;
         
         private System.Nullable<System.DateTime> unloadedAtField;
@@ -3748,9 +3694,19 @@ namespace CoreForm.CoreWebService {
         
         private int onSpotAtConsigneeField;
         
+        private bool isPerishableWaybillField;
+        
+        private bool isLiveStockWaybillField;
+        
         private bool isEmptyWayBillField;
         
-        private System.Nullable<System.DateTime> CreatedOnField;
+        private System.Nullable<int> waybillOrderField;
+        
+        private System.Nullable<bool> isDeletedField;
+        
+        private System.Nullable<System.DateTime> createdOnField;
+        
+        private System.Nullable<System.DateTime> modifiedOnField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -3802,6 +3758,45 @@ namespace CoreForm.CoreWebService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public System.Nullable<int> consigneeID {
+            get {
+                return this.consigneeIDField;
+            }
+            set {
+                if ((this.consigneeIDField.Equals(value) != true)) {
+                    this.consigneeIDField = value;
+                    this.RaisePropertyChanged("consigneeID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public System.Nullable<int> shipperID {
+            get {
+                return this.shipperIDField;
+            }
+            set {
+                if ((this.shipperIDField.Equals(value) != true)) {
+                    this.shipperIDField = value;
+                    this.RaisePropertyChanged("shipperID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
+        public System.Nullable<int> assignedRollingStockID {
+            get {
+                return this.assignedRollingStockIDField;
+            }
+            set {
+                if ((this.assignedRollingStockIDField.Equals(value) != true)) {
+                    this.assignedRollingStockIDField = value;
+                    this.RaisePropertyChanged("assignedRollingStockID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
         public System.Nullable<System.DateTime> loadedAt {
             get {
                 return this.loadedAtField;
@@ -3814,7 +3809,7 @@ namespace CoreForm.CoreWebService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=7)]
         public System.Nullable<System.DateTime> unloadedAt {
             get {
                 return this.unloadedAtField;
@@ -3827,7 +3822,7 @@ namespace CoreForm.CoreWebService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=8)]
         public System.Nullable<System.DateTime> preIcedAt {
             get {
                 return this.preIcedAtField;
@@ -3840,7 +3835,7 @@ namespace CoreForm.CoreWebService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=9)]
         public System.Nullable<System.DateTime> initialIcedAt {
             get {
                 return this.initialIcedAtField;
@@ -3853,7 +3848,7 @@ namespace CoreForm.CoreWebService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=7)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=10)]
         public System.Nullable<bool> isWeighed {
             get {
                 return this.isWeighedField;
@@ -3866,7 +3861,7 @@ namespace CoreForm.CoreWebService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=8)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=11)]
         public System.Nullable<int> weight {
             get {
                 return this.weightField;
@@ -3879,7 +3874,7 @@ namespace CoreForm.CoreWebService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=9)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=12)]
         public int onSpotAtShipper {
             get {
                 return this.onSpotAtShipperField;
@@ -3892,7 +3887,7 @@ namespace CoreForm.CoreWebService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=10)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=13)]
         public int onSpotAtConsignee {
             get {
                 return this.onSpotAtConsigneeField;
@@ -3905,7 +3900,33 @@ namespace CoreForm.CoreWebService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=11)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=14)]
+        public bool isPerishableWaybill {
+            get {
+                return this.isPerishableWaybillField;
+            }
+            set {
+                if ((this.isPerishableWaybillField.Equals(value) != true)) {
+                    this.isPerishableWaybillField = value;
+                    this.RaisePropertyChanged("isPerishableWaybill");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=15)]
+        public bool isLiveStockWaybill {
+            get {
+                return this.isLiveStockWaybillField;
+            }
+            set {
+                if ((this.isLiveStockWaybillField.Equals(value) != true)) {
+                    this.isLiveStockWaybillField = value;
+                    this.RaisePropertyChanged("isLiveStockWaybill");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=16)]
         public bool isEmptyWayBill {
             get {
                 return this.isEmptyWayBillField;
@@ -3918,15 +3939,54 @@ namespace CoreForm.CoreWebService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=12)]
-        public System.Nullable<System.DateTime> CreatedOn {
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=17)]
+        public System.Nullable<int> waybillOrder {
             get {
-                return this.CreatedOnField;
+                return this.waybillOrderField;
             }
             set {
-                if ((this.CreatedOnField.Equals(value) != true)) {
-                    this.CreatedOnField = value;
-                    this.RaisePropertyChanged("CreatedOn");
+                if ((this.waybillOrderField.Equals(value) != true)) {
+                    this.waybillOrderField = value;
+                    this.RaisePropertyChanged("waybillOrder");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=18)]
+        public System.Nullable<bool> isDeleted {
+            get {
+                return this.isDeletedField;
+            }
+            set {
+                if ((this.isDeletedField.Equals(value) != true)) {
+                    this.isDeletedField = value;
+                    this.RaisePropertyChanged("isDeleted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=19)]
+        public System.Nullable<System.DateTime> createdOn {
+            get {
+                return this.createdOnField;
+            }
+            set {
+                if ((this.createdOnField.Equals(value) != true)) {
+                    this.createdOnField = value;
+                    this.RaisePropertyChanged("createdOn");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=20)]
+        public System.Nullable<System.DateTime> modifiedOn {
+            get {
+                return this.modifiedOnField;
+            }
+            set {
+                if ((this.modifiedOnField.Equals(value) != true)) {
+                    this.modifiedOnField = value;
+                    this.RaisePropertyChanged("modifiedOn");
                 }
             }
         }
@@ -7546,37 +7606,25 @@ namespace CoreForm.CoreWebService {
         public int cps;
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=11)]
-        public bool isEmptyCarBill;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=12)]
         public bool isLiveStock;
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=13)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order=12)]
         public bool isReverseRoute;
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=14)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order=13)]
         public bool isReturnEmpty;
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=15)]
-        public bool isNextWaybill;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=16)]
-        public int nextWaybill;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=17)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order=14)]
         public decimal requestedCarsPerDay;
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=18)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order=15)]
         public int timeToUnload;
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=19)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order=16)]
         public int timeToLoad;
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=20)]
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=17)]
         public string displayText;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=21)]
-        public bool isActive;
         
         public addBillOfLadingRequestBody() {
         }
@@ -7593,17 +7641,13 @@ namespace CoreForm.CoreWebService {
                     bool isPreIce, 
                     bool isInitialIce, 
                     int cps, 
-                    bool isEmptyCarBill, 
                     bool isLiveStock, 
                     bool isReverseRoute, 
                     bool isReturnEmpty, 
-                    bool isNextWaybill, 
-                    int nextWaybill, 
                     decimal requestedCarsPerDay, 
                     int timeToUnload, 
                     int timeToLoad, 
-                    string displayText, 
-                    bool isActive) {
+                    string displayText) {
             this.consigneeID = consigneeID;
             this.shipperID = shipperID;
             this.carTypeRequestID = carTypeRequestID;
@@ -7615,17 +7659,13 @@ namespace CoreForm.CoreWebService {
             this.isPreIce = isPreIce;
             this.isInitialIce = isInitialIce;
             this.cps = cps;
-            this.isEmptyCarBill = isEmptyCarBill;
             this.isLiveStock = isLiveStock;
             this.isReverseRoute = isReverseRoute;
             this.isReturnEmpty = isReturnEmpty;
-            this.isNextWaybill = isNextWaybill;
-            this.nextWaybill = nextWaybill;
             this.requestedCarsPerDay = requestedCarsPerDay;
             this.timeToUnload = timeToUnload;
             this.timeToLoad = timeToLoad;
             this.displayText = displayText;
-            this.isActive = isActive;
         }
     }
     
@@ -7723,37 +7763,25 @@ namespace CoreForm.CoreWebService {
         public int cps;
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=12)]
-        public bool isEmptyCarBill;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=13)]
         public bool isLiveStock;
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=14)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order=13)]
         public bool isReverseRoute;
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=15)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order=14)]
         public bool isReturnEmpty;
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=16)]
-        public bool isNextWaybill;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=17)]
-        public int nextWaybill;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=18)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order=15)]
         public decimal requestedCarsPerDay;
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=19)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order=16)]
         public int timeToUnload;
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=20)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order=17)]
         public int timeToLoad;
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=21)]
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=18)]
         public string displayText;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=22)]
-        public bool isActive;
         
         public updateBillOfLadingRequestBody() {
         }
@@ -7771,17 +7799,13 @@ namespace CoreForm.CoreWebService {
                     bool isPreIce, 
                     bool isInitialIce, 
                     int cps, 
-                    bool isEmptyCarBill, 
                     bool isLiveStock, 
                     bool isReverseRoute, 
                     bool isReturnEmpty, 
-                    bool isNextWaybill, 
-                    int nextWaybill, 
                     decimal requestedCarsPerDay, 
                     int timeToUnload, 
                     int timeToLoad, 
-                    string displayText, 
-                    bool isActive) {
+                    string displayText) {
             this.id = id;
             this.consigneeID = consigneeID;
             this.shipperID = shipperID;
@@ -7794,17 +7818,13 @@ namespace CoreForm.CoreWebService {
             this.isPreIce = isPreIce;
             this.isInitialIce = isInitialIce;
             this.cps = cps;
-            this.isEmptyCarBill = isEmptyCarBill;
             this.isLiveStock = isLiveStock;
             this.isReverseRoute = isReverseRoute;
             this.isReturnEmpty = isReturnEmpty;
-            this.isNextWaybill = isNextWaybill;
-            this.nextWaybill = nextWaybill;
             this.requestedCarsPerDay = requestedCarsPerDay;
             this.timeToUnload = timeToUnload;
             this.timeToLoad = timeToLoad;
             this.displayText = displayText;
-            this.isActive = isActive;
         }
     }
     
@@ -10141,17 +10161,13 @@ namespace CoreForm.CoreWebService {
                     bool isPreIce, 
                     bool isInitialIce, 
                     int cps, 
-                    bool isEmptyCarBill, 
                     bool isLiveStock, 
                     bool isReverseRoute, 
                     bool isReturnEmpty, 
-                    bool isNextWaybill, 
-                    int nextWaybill, 
                     decimal requestedCarsPerDay, 
                     int timeToUnload, 
                     int timeToLoad, 
-                    string displayText, 
-                    bool isActive) {
+                    string displayText) {
             CoreForm.CoreWebService.addBillOfLadingRequest inValue = new CoreForm.CoreWebService.addBillOfLadingRequest();
             inValue.Body = new CoreForm.CoreWebService.addBillOfLadingRequestBody();
             inValue.Body.consigneeID = consigneeID;
@@ -10165,17 +10181,13 @@ namespace CoreForm.CoreWebService {
             inValue.Body.isPreIce = isPreIce;
             inValue.Body.isInitialIce = isInitialIce;
             inValue.Body.cps = cps;
-            inValue.Body.isEmptyCarBill = isEmptyCarBill;
             inValue.Body.isLiveStock = isLiveStock;
             inValue.Body.isReverseRoute = isReverseRoute;
             inValue.Body.isReturnEmpty = isReturnEmpty;
-            inValue.Body.isNextWaybill = isNextWaybill;
-            inValue.Body.nextWaybill = nextWaybill;
             inValue.Body.requestedCarsPerDay = requestedCarsPerDay;
             inValue.Body.timeToUnload = timeToUnload;
             inValue.Body.timeToLoad = timeToLoad;
             inValue.Body.displayText = displayText;
-            inValue.Body.isActive = isActive;
             CoreForm.CoreWebService.addBillOfLadingResponse retVal = ((CoreForm.CoreWebService.ICoreSoap)(this)).addBillOfLading(inValue);
             return retVal.Body.addBillOfLadingResult;
         }
@@ -10197,17 +10209,13 @@ namespace CoreForm.CoreWebService {
                     bool isPreIce, 
                     bool isInitialIce, 
                     int cps, 
-                    bool isEmptyCarBill, 
                     bool isLiveStock, 
                     bool isReverseRoute, 
                     bool isReturnEmpty, 
-                    bool isNextWaybill, 
-                    int nextWaybill, 
                     decimal requestedCarsPerDay, 
                     int timeToUnload, 
                     int timeToLoad, 
-                    string displayText, 
-                    bool isActive) {
+                    string displayText) {
             CoreForm.CoreWebService.addBillOfLadingRequest inValue = new CoreForm.CoreWebService.addBillOfLadingRequest();
             inValue.Body = new CoreForm.CoreWebService.addBillOfLadingRequestBody();
             inValue.Body.consigneeID = consigneeID;
@@ -10221,17 +10229,13 @@ namespace CoreForm.CoreWebService {
             inValue.Body.isPreIce = isPreIce;
             inValue.Body.isInitialIce = isInitialIce;
             inValue.Body.cps = cps;
-            inValue.Body.isEmptyCarBill = isEmptyCarBill;
             inValue.Body.isLiveStock = isLiveStock;
             inValue.Body.isReverseRoute = isReverseRoute;
             inValue.Body.isReturnEmpty = isReturnEmpty;
-            inValue.Body.isNextWaybill = isNextWaybill;
-            inValue.Body.nextWaybill = nextWaybill;
             inValue.Body.requestedCarsPerDay = requestedCarsPerDay;
             inValue.Body.timeToUnload = timeToUnload;
             inValue.Body.timeToLoad = timeToLoad;
             inValue.Body.displayText = displayText;
-            inValue.Body.isActive = isActive;
             return ((CoreForm.CoreWebService.ICoreSoap)(this)).addBillOfLadingAsync(inValue);
         }
         
@@ -10253,17 +10257,13 @@ namespace CoreForm.CoreWebService {
                     bool isPreIce, 
                     bool isInitialIce, 
                     int cps, 
-                    bool isEmptyCarBill, 
                     bool isLiveStock, 
                     bool isReverseRoute, 
                     bool isReturnEmpty, 
-                    bool isNextWaybill, 
-                    int nextWaybill, 
                     decimal requestedCarsPerDay, 
                     int timeToUnload, 
                     int timeToLoad, 
-                    string displayText, 
-                    bool isActive) {
+                    string displayText) {
             CoreForm.CoreWebService.updateBillOfLadingRequest inValue = new CoreForm.CoreWebService.updateBillOfLadingRequest();
             inValue.Body = new CoreForm.CoreWebService.updateBillOfLadingRequestBody();
             inValue.Body.id = id;
@@ -10278,17 +10278,13 @@ namespace CoreForm.CoreWebService {
             inValue.Body.isPreIce = isPreIce;
             inValue.Body.isInitialIce = isInitialIce;
             inValue.Body.cps = cps;
-            inValue.Body.isEmptyCarBill = isEmptyCarBill;
             inValue.Body.isLiveStock = isLiveStock;
             inValue.Body.isReverseRoute = isReverseRoute;
             inValue.Body.isReturnEmpty = isReturnEmpty;
-            inValue.Body.isNextWaybill = isNextWaybill;
-            inValue.Body.nextWaybill = nextWaybill;
             inValue.Body.requestedCarsPerDay = requestedCarsPerDay;
             inValue.Body.timeToUnload = timeToUnload;
             inValue.Body.timeToLoad = timeToLoad;
             inValue.Body.displayText = displayText;
-            inValue.Body.isActive = isActive;
             CoreForm.CoreWebService.updateBillOfLadingResponse retVal = ((CoreForm.CoreWebService.ICoreSoap)(this)).updateBillOfLading(inValue);
             return retVal.Body.updateBillOfLadingResult;
         }
@@ -10311,17 +10307,13 @@ namespace CoreForm.CoreWebService {
                     bool isPreIce, 
                     bool isInitialIce, 
                     int cps, 
-                    bool isEmptyCarBill, 
                     bool isLiveStock, 
                     bool isReverseRoute, 
                     bool isReturnEmpty, 
-                    bool isNextWaybill, 
-                    int nextWaybill, 
                     decimal requestedCarsPerDay, 
                     int timeToUnload, 
                     int timeToLoad, 
-                    string displayText, 
-                    bool isActive) {
+                    string displayText) {
             CoreForm.CoreWebService.updateBillOfLadingRequest inValue = new CoreForm.CoreWebService.updateBillOfLadingRequest();
             inValue.Body = new CoreForm.CoreWebService.updateBillOfLadingRequestBody();
             inValue.Body.id = id;
@@ -10336,17 +10328,13 @@ namespace CoreForm.CoreWebService {
             inValue.Body.isPreIce = isPreIce;
             inValue.Body.isInitialIce = isInitialIce;
             inValue.Body.cps = cps;
-            inValue.Body.isEmptyCarBill = isEmptyCarBill;
             inValue.Body.isLiveStock = isLiveStock;
             inValue.Body.isReverseRoute = isReverseRoute;
             inValue.Body.isReturnEmpty = isReturnEmpty;
-            inValue.Body.isNextWaybill = isNextWaybill;
-            inValue.Body.nextWaybill = nextWaybill;
             inValue.Body.requestedCarsPerDay = requestedCarsPerDay;
             inValue.Body.timeToUnload = timeToUnload;
             inValue.Body.timeToLoad = timeToLoad;
             inValue.Body.displayText = displayText;
-            inValue.Body.isActive = isActive;
             return ((CoreForm.CoreWebService.ICoreSoap)(this)).updateBillOfLadingAsync(inValue);
         }
         
