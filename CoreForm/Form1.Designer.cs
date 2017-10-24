@@ -36,7 +36,7 @@
             this.buttonArrCodes = new System.Windows.Forms.Button();
             this.buttonRollingStock = new System.Windows.Forms.Button();
             this.buttonConsigneeShipper = new System.Windows.Forms.Button();
-            this.buttonWaybillTemplates = new System.Windows.Forms.Button();
+            this.buttonBillOfLadingTemplates = new System.Windows.Forms.Button();
             this.buttonWaybill = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -120,15 +120,15 @@
             this.buttonConsigneeShipper.UseVisualStyleBackColor = true;
             this.buttonConsigneeShipper.Click += new System.EventHandler(this.buttonConsigneeShipper_Click);
             // 
-            // buttonWaybillTemplates
+            // buttonBillOfLadingTemplates
             // 
-            this.buttonWaybillTemplates.Location = new System.Drawing.Point(477, 264);
-            this.buttonWaybillTemplates.Name = "buttonWaybillTemplates";
-            this.buttonWaybillTemplates.Size = new System.Drawing.Size(149, 105);
-            this.buttonWaybillTemplates.TabIndex = 14;
-            this.buttonWaybillTemplates.Text = "Waybill Templates";
-            this.buttonWaybillTemplates.UseVisualStyleBackColor = true;
-            this.buttonWaybillTemplates.Click += new System.EventHandler(this.buttonWaybillTemplates_Click);
+            this.buttonBillOfLadingTemplates.Location = new System.Drawing.Point(477, 264);
+            this.buttonBillOfLadingTemplates.Name = "buttonBillOfLadingTemplates";
+            this.buttonBillOfLadingTemplates.Size = new System.Drawing.Size(149, 105);
+            this.buttonBillOfLadingTemplates.TabIndex = 14;
+            this.buttonBillOfLadingTemplates.Text = "Bill of Lading";
+            this.buttonBillOfLadingTemplates.UseVisualStyleBackColor = true;
+            this.buttonBillOfLadingTemplates.Click += new System.EventHandler(this.buttonWaybillTemplates_Click);
             // 
             // buttonWaybill
             // 
@@ -146,7 +146,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(638, 488);
             this.Controls.Add(this.buttonWaybill);
-            this.Controls.Add(this.buttonWaybillTemplates);
+            this.Controls.Add(this.buttonBillOfLadingTemplates);
             this.Controls.Add(this.buttonConsigneeShipper);
             this.Controls.Add(this.buttonRollingStock);
             this.Controls.Add(this.buttonArrCodes);
@@ -171,7 +171,7 @@
         private System.Windows.Forms.Button buttonArrCodes;
         private System.Windows.Forms.Button buttonRollingStock;
         private System.Windows.Forms.Button buttonConsigneeShipper;
-        private System.Windows.Forms.Button buttonWaybillTemplates;
+        private System.Windows.Forms.Button buttonBillOfLadingTemplates;
         private System.Windows.Forms.Button buttonWaybill;
     }
 }

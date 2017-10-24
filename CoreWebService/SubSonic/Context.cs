@@ -131,16 +131,16 @@ namespace Core
         public Query<BillOfLadingRequestedCarTypeAttribute> BillOfLadingRequestedCarTypeAttributes { get; set; }
         public Query<CarType> CarTypes { get; set; }
         public Query<Setting> Settings { get; set; }
-        public Query<BillOfLading> BillOfLadings { get; set; }
         public Query<SwitchListsLayout> SwitchListsLayouts { get; set; }
-        public Query<Waybill> Waybills { get; set; }
         public Query<rfid> rfids { get; set; }
         public Query<EmptyCarBill> EmptyCarBills { get; set; }
         public Query<ARRCode> ARRCodes { get; set; }
         public Query<CarTypeAttribute> CarTypeAttributes { get; set; }
         public Query<rollingStockAtrribute> rollingStockAtrributes { get; set; }
+        public Query<Waybill> Waybills { get; set; }
         public Query<Location> Locations { get; set; }
         public Query<ConsigneeShipper> ConsigneeShippers { get; set; }
+        public Query<BillOfLading> BillOfLadings { get; set; }
         public Query<BillOfLadingPath> BillOfLadingPaths { get; set; }
         public Query<RollingStock> RollingStocks { get; set; }
 
@@ -249,16 +249,16 @@ namespace Core
             BillOfLadingRequestedCarTypeAttributes = new Query<BillOfLadingRequestedCarTypeAttribute>(provider);
             CarTypes = new Query<CarType>(provider);
             Settings = new Query<Setting>(provider);
-            BillOfLadings = new Query<BillOfLading>(provider);
             SwitchListsLayouts = new Query<SwitchListsLayout>(provider);
-            Waybills = new Query<Waybill>(provider);
             rfids = new Query<rfid>(provider);
             EmptyCarBills = new Query<EmptyCarBill>(provider);
             ARRCodes = new Query<ARRCode>(provider);
             CarTypeAttributes = new Query<CarTypeAttribute>(provider);
             rollingStockAtrributes = new Query<rollingStockAtrribute>(provider);
+            Waybills = new Query<Waybill>(provider);
             Locations = new Query<Location>(provider);
             ConsigneeShippers = new Query<ConsigneeShipper>(provider);
+            BillOfLadings = new Query<BillOfLading>(provider);
             BillOfLadingPaths = new Query<BillOfLadingPath>(provider);
             RollingStocks = new Query<RollingStock>(provider);
             #endregion
@@ -270,16 +270,16 @@ namespace Core
             	DataProvider.Schema.Tables.Add(new BillOfLadingRequestedCarTypeAttributeTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new CarTypeTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new SettingsTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new BillOfLadingTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new SwitchListsLayoutsTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new WaybillsTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new rfidTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new EmptyCarBillTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new ARRCodesTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new CarTypeAttributesTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new rollingStockAtrributesTable(DataProvider));
+            	DataProvider.Schema.Tables.Add(new WaybillsTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new LocationsTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new ConsigneeShipperTable(DataProvider));
+            	DataProvider.Schema.Tables.Add(new BillOfLadingTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new BillOfLadingPathTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new RollingStockTable(DataProvider));
             }

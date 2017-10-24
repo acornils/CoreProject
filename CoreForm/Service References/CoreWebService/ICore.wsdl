@@ -929,17 +929,13 @@
             <s:element minOccurs="1" maxOccurs="1" name="isPreIce" type="s:boolean" />
             <s:element minOccurs="1" maxOccurs="1" name="isInitialIce" type="s:boolean" />
             <s:element minOccurs="1" maxOccurs="1" name="cps" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="isEmptyCarBill" type="s:boolean" />
             <s:element minOccurs="1" maxOccurs="1" name="isLiveStock" type="s:boolean" />
             <s:element minOccurs="1" maxOccurs="1" name="isReverseRoute" type="s:boolean" />
             <s:element minOccurs="1" maxOccurs="1" name="isReturnEmpty" type="s:boolean" />
-            <s:element minOccurs="1" maxOccurs="1" name="isNextWaybill" type="s:boolean" />
-            <s:element minOccurs="1" maxOccurs="1" name="nextWaybill" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="requestedCarsPerDay" type="s:decimal" />
             <s:element minOccurs="1" maxOccurs="1" name="timeToUnload" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="timeToLoad" type="s:int" />
             <s:element minOccurs="0" maxOccurs="1" name="displayText" type="s:string" />
-            <s:element minOccurs="1" maxOccurs="1" name="isActive" type="s:boolean" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -977,16 +973,12 @@
           <s:element minOccurs="1" maxOccurs="1" name="isLiveStock" nillable="true" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="isReverseRoute" nillable="true" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="isReturnEmpty" nillable="true" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="isNextBillOfLading" nillable="true" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="nextBillOfLadingID" nillable="true" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="requestedCarsPerDay" nillable="true" type="s:decimal" />
           <s:element minOccurs="1" maxOccurs="1" name="timeToUnload" nillable="true" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="timeToLoad" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="isTemplateActive" nillable="true" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="isDeleted" nillable="true" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="isTemplate" nillable="true" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="CreatedOn" nillable="true" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="RollingStockID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="createdOn" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="modifiedOn" nillable="true" type="s:dateTime" />
         </s:sequence>
       </s:complexType>
       <s:element name="updateBillOfLading">
@@ -1004,17 +996,13 @@
             <s:element minOccurs="1" maxOccurs="1" name="isPreIce" type="s:boolean" />
             <s:element minOccurs="1" maxOccurs="1" name="isInitialIce" type="s:boolean" />
             <s:element minOccurs="1" maxOccurs="1" name="cps" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="isEmptyCarBill" type="s:boolean" />
             <s:element minOccurs="1" maxOccurs="1" name="isLiveStock" type="s:boolean" />
             <s:element minOccurs="1" maxOccurs="1" name="isReverseRoute" type="s:boolean" />
             <s:element minOccurs="1" maxOccurs="1" name="isReturnEmpty" type="s:boolean" />
-            <s:element minOccurs="1" maxOccurs="1" name="isNextWaybill" type="s:boolean" />
-            <s:element minOccurs="1" maxOccurs="1" name="nextWaybill" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="requestedCarsPerDay" type="s:decimal" />
             <s:element minOccurs="1" maxOccurs="1" name="timeToUnload" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="timeToLoad" type="s:int" />
             <s:element minOccurs="0" maxOccurs="1" name="displayText" type="s:string" />
-            <s:element minOccurs="1" maxOccurs="1" name="isActive" type="s:boolean" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1273,6 +1261,9 @@
           <s:element minOccurs="1" maxOccurs="1" name="TestMode" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="billOfLadingID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="consigneeID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="shipperID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="assignedRollingStockID" nillable="true" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="loadedAt" nillable="true" type="s:dateTime" />
           <s:element minOccurs="1" maxOccurs="1" name="unloadedAt" nillable="true" type="s:dateTime" />
           <s:element minOccurs="1" maxOccurs="1" name="preIcedAt" nillable="true" type="s:dateTime" />
@@ -1281,8 +1272,13 @@
           <s:element minOccurs="1" maxOccurs="1" name="weight" nillable="true" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="onSpotAtShipper" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="onSpotAtConsignee" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="isPerishableWaybill" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="isLiveStockWaybill" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="isEmptyWayBill" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="CreatedOn" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="waybillOrder" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="isDeleted" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="createdOn" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="modifiedOn" nillable="true" type="s:dateTime" />
         </s:sequence>
       </s:complexType>
       <s:element name="updateWaybill">

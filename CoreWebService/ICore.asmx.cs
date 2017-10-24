@@ -1008,7 +1008,7 @@ namespace CoreWebService
         }
 
         [WebMethod]
-        public BillOfLadingResponse addBillOfLading(int consigneeID, int shipperID, int carTypeRequestID, int carLengthRequested, int carCapacityRequested, string noPackages, string descriptionOfArticles, bool isPerishable, bool isPreIce, bool isInitialIce, int cps, bool isEmptyCarBill, bool isLiveStock, bool isReverseRoute, bool isReturnEmpty, bool isNextWaybill, int nextWaybill, decimal requestedCarsPerDay, int timeToUnload, int timeToLoad, string displayText, bool isActive)
+        public BillOfLadingResponse addBillOfLading(int consigneeID, int shipperID, int carTypeRequestID, int carLengthRequested, int carCapacityRequested, string noPackages, string descriptionOfArticles, bool isPerishable, bool isPreIce, bool isInitialIce, int cps, bool isLiveStock, bool isReverseRoute, bool isReturnEmpty, decimal requestedCarsPerDay, int timeToUnload, int timeToLoad, string displayText)
         {
             try
             {
@@ -1029,13 +1029,12 @@ namespace CoreWebService
                 billOfLading.isLiveStock = isLiveStock;
                 billOfLading.isReverseRoute = isReverseRoute;
                 billOfLading.isReturnEmpty = isReturnEmpty;
-                billOfLading.isNextBillOfLading = isNextWaybill;
-                billOfLading.nextBillOfLadingID = nextWaybill;
                 billOfLading.requestedCarsPerDay = requestedCarsPerDay;
                 billOfLading.timeToUnload = timeToUnload;
                 billOfLading.timeToLoad = timeToLoad;
                 //billOfLading.isActive = isActive;
                 billOfLading.displayText = displayText;
+                //billOfLading.lastStartDateTime = DateTime.MinValue;
                 billOfLading.isDeleted = false;
                 billOfLading.Add();
 
@@ -1050,7 +1049,7 @@ namespace CoreWebService
         }
 
         [WebMethod]
-        public BillOfLadingResponse updateBillOfLading(int id, int consigneeID, int shipperID, int carTypeRequestID, int carLengthRequested, int carCapacityRequested, string noPackages, string descriptionOfArticles, bool isPerishable, bool isPreIce, bool isInitialIce, int cps, bool isEmptyCarBill, bool isLiveStock, bool isReverseRoute, bool isReturnEmpty, bool isNextWaybill, int nextWaybill, decimal requestedCarsPerDay, int timeToUnload, int timeToLoad, string displayText, bool isActive)
+        public BillOfLadingResponse updateBillOfLading(int id, int consigneeID, int shipperID, int carTypeRequestID, int carLengthRequested, int carCapacityRequested, string noPackages, string descriptionOfArticles, bool isPerishable, bool isPreIce, bool isInitialIce, int cps, bool isLiveStock, bool isReverseRoute, bool isReturnEmpty, decimal requestedCarsPerDay, int timeToUnload, int timeToLoad, string displayText)
         {
             try
             {
@@ -1071,8 +1070,6 @@ namespace CoreWebService
                 billOfLading.isLiveStock = isLiveStock;
                 billOfLading.isReverseRoute = isReverseRoute;
                 billOfLading.isReturnEmpty = isReturnEmpty;
-                billOfLading.isNextBillOfLading = isNextWaybill;
-                billOfLading.nextBillOfLadingID = nextWaybill;
                 billOfLading.requestedCarsPerDay = requestedCarsPerDay;
                 billOfLading.timeToUnload = timeToUnload;
                 billOfLading.timeToLoad = timeToLoad;

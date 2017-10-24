@@ -20,14 +20,14 @@ namespace CoreForm
 
         }
 
-        private void BillOfLadings_Load(object sender, EventArgs e)
+        private void BillOfLading_Load(object sender, EventArgs e)
         {
-            CoreWebService.BillOfLadingListResponse waybillTemplates = client.listBillOfLading(textBoxSearch.Text);
-            if(waybillTemplates.Status == 0)
+            CoreWebService.BillOfLadingListResponse billOfLading = client.listBillOfLading("");
+            if (billOfLading.Status == 0)
             {
                 listBoxBillOfLading.DisplayMember = "displayText";
                 listBoxBillOfLading.ValueMember = "ID";
-                listBoxBillOfLading.DataSource = waybillTemplates.Data;
+                listBoxBillOfLading.DataSource = billOfLading.Data;
             }
 
             CoreWebService.LocationListResponse locations = client.listLocations("");
@@ -46,7 +46,7 @@ namespace CoreForm
             }
 
             CoreWebService.ConsigneeShipperListResponse shipper = client.listConsigneeShipper("");
-            if(shipper.Status == 0)
+            if (shipper.Status == 0)
             {
                 comboBoxShipper.DisplayMember = "name";
                 comboBoxShipper.ValueMember = "ID";
@@ -54,7 +54,7 @@ namespace CoreForm
             }
 
             CoreWebService.CarTypeListResponse carType = client.listCarTypes();
-            if(carType.Status == 0)
+            if (carType.Status == 0)
             {
                 comboBoxRequestedCarType.DisplayMember = "shortName";
                 comboBoxRequestedCarType.ValueMember = "ID";
@@ -161,13 +161,8 @@ namespace CoreForm
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            int nextWaybillID = 0;
-            if(comboBoxNextWaybill.SelectedValue != null)
-            {
-                nextWaybillID = (int)comboBoxNextWaybill.SelectedValue;
-            }
             string displayText = comboBoxShipper.Text + " -> " + comboBoxConsignee.Text + " - " + textBoxDescOfArticles.Text.Trim();
-            CoreWebService.BillOfLadingResponse response = client.addBillOfLading((int)comboBoxConsignee.SelectedValue, (int)comboBoxShipper.SelectedValue, (int)comboBoxRequestedCarType.SelectedValue, (int)numericUpDownRequestedLength.Value, (int)numericUpDownCapacityTons.Value, textBoxNoPkgs.Text, textBoxDescOfArticles.Text, checkBoxIsPerishable.Checked, checkBoxPreIce.Checked, checkBoxInitialIce.Checked, 0, false, checkBoxIsLiveStock.Checked, checkBoxReverseRoute.Checked, checkBoxReturnEmpty.Checked, checkBoxNextWaybill.Checked, nextWaybillID, (decimal)numericUpDownCarsPerDay.Value, (int)numericUpDownUnloadTime.Value, (int)numericUpDownLoadTime.Value, displayText, true);
+            CoreWebService.BillOfLadingResponse response = client.addBillOfLading((int)comboBoxConsignee.SelectedValue, (int)comboBoxShipper.SelectedValue, (int)comboBoxRequestedCarType.SelectedValue, (int)numericUpDownRequestedLength.Value, (int)numericUpDownCapacityTons.Value, textBoxNoPkgs.Text, textBoxDescOfArticles.Text, checkBoxIsPerishable.Checked, checkBoxPreIce.Checked, checkBoxInitialIce.Checked, 0, checkBoxIsLiveStock.Checked, checkBoxReverseRoute.Checked, checkBoxReturnEmpty.Checked, (decimal)numericUpDownCarsPerDay.Value, (int)numericUpDownUnloadTime.Value, (int)numericUpDownLoadTime.Value, displayText);
 
             if (response.Status == 0)
             {              
@@ -194,12 +189,12 @@ namespace CoreForm
                     CoreWebService.BillOfLadingCarTypeAttributesResponse rsResponse = client.addBillOfLadingCartypeAttribute(response.Data.ID, item.ID);
                 }
 
-                CoreWebService.BillOfLadingListResponse waybillTemplates = client.listBillOfLading(textBoxSearch.Text);
-                if (waybillTemplates.Status == 0)
+                CoreWebService.BillOfLadingListResponse billOfLading = client.listBillOfLading("");
+                if (billOfLading.Status == 0)
                 {
                     listBoxBillOfLading.DisplayMember = "displayText";
                     listBoxBillOfLading.ValueMember = "ID";
-                    listBoxBillOfLading.DataSource = waybillTemplates.Data;
+                    listBoxBillOfLading.DataSource = billOfLading.Data;
                 }
 
                 listBoxBillOfLading.SelectedValue = response.Data.ID;
@@ -208,13 +203,8 @@ namespace CoreForm
 
         private void buttonUpdate_Click(object sender, EventArgs e)
         {   
-            int nextWaybillID = 0;
-            if (comboBoxNextWaybill.SelectedValue != null)
-            {
-                nextWaybillID = (int)comboBoxNextWaybill.SelectedValue;
-            }
             string displayText = comboBoxShipper.Text + " -> " + comboBoxConsignee.Text + " - " + textBoxDescOfArticles.Text.Trim();
-            CoreWebService.BillOfLadingResponse response = client.updateBillOfLading((int)listBoxBillOfLading.SelectedValue, (int)comboBoxConsignee.SelectedValue, (int)comboBoxShipper.SelectedValue, (int)comboBoxRequestedCarType.SelectedValue, (int)numericUpDownRequestedLength.Value, (int)numericUpDownCapacityTons.Value, textBoxNoPkgs.Text, textBoxDescOfArticles.Text, checkBoxIsPerishable.Checked, checkBoxPreIce.Checked, checkBoxInitialIce.Checked, 0, false, checkBoxIsLiveStock.Checked, checkBoxReverseRoute.Checked, checkBoxReturnEmpty.Checked, checkBoxNextWaybill.Checked, nextWaybillID, (decimal)numericUpDownCarsPerDay.Value, (int)numericUpDownUnloadTime.Value, (int)numericUpDownLoadTime.Value, displayText, true);
+            CoreWebService.BillOfLadingResponse response = client.updateBillOfLading((int)listBoxBillOfLading.SelectedValue, (int)comboBoxConsignee.SelectedValue, (int)comboBoxShipper.SelectedValue, (int)comboBoxRequestedCarType.SelectedValue, (int)numericUpDownRequestedLength.Value, (int)numericUpDownCapacityTons.Value, textBoxNoPkgs.Text, textBoxDescOfArticles.Text, checkBoxIsPerishable.Checked, checkBoxPreIce.Checked, checkBoxInitialIce.Checked, 0, checkBoxIsLiveStock.Checked, checkBoxReverseRoute.Checked, checkBoxReturnEmpty.Checked, (decimal)numericUpDownCarsPerDay.Value, (int)numericUpDownUnloadTime.Value, (int)numericUpDownLoadTime.Value, displayText);
 
             if (response.Status == 0)
             {               
@@ -243,23 +233,24 @@ namespace CoreForm
                     CoreWebService.BillOfLadingCarTypeAttributesResponse rsResponse = client.addBillOfLadingCartypeAttribute(response.Data.ID, item.ID);
                 }
 
-                CoreWebService.BillOfLadingListResponse waybillTemplates = client.listBillOfLading(textBoxSearch.Text);
-                if (waybillTemplates.Status == 0)
+                CoreWebService.BillOfLadingListResponse billOfLading = client.listBillOfLading("");
+                if (billOfLading.Status == 0)
                 {
                     listBoxBillOfLading.DisplayMember = "displayText";
                     listBoxBillOfLading.ValueMember = "ID";
-                    listBoxBillOfLading.DataSource = waybillTemplates.Data;
+                    listBoxBillOfLading.DataSource = billOfLading.Data;
                 }
 
                 listBoxBillOfLading.SelectedValue = response.Data.ID;
             }
         }
 
-        private void listBoxBillOfLading_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void listBoxBillOfLading_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             CoreWebService.BillOfLadingResponse response = client.getBillOfLading((int)listBoxBillOfLading.SelectedValue);
 
-            if(response.Status == 0)
+            if (response.Status == 0)
             {
                 comboBoxConsignee.SelectedValue = response.Data.consigneeID;
                 comboBoxShipper.SelectedValue = response.Data.shipperID;
@@ -275,19 +266,17 @@ namespace CoreForm
                 checkBoxInitialIce.Checked = (bool)response.Data.isInitialIce;
                 checkBoxReverseRoute.Checked = (bool)response.Data.isReverseRoute;
                 checkBoxReturnEmpty.Checked = (bool)response.Data.isReturnEmpty;
-                checkBoxNextWaybill.Checked = (bool)response.Data.isNextBillOfLading;
                 numericUpDownCarsPerDay.Value = (decimal)response.Data.requestedCarsPerDay;
                 numericUpDownLoadTime.Value = (decimal)response.Data.timeToLoad;
                 numericUpDownUnloadTime.Value = (decimal)response.Data.timeToUnload;
-                comboBoxNextWaybill.SelectedValue = (int)response.Data.nextBillOfLadingID;
 
                 CoreWebService.BillOfLadingPathListResponse path = client.listBillOfLadingPath((int)listBoxBillOfLading.SelectedValue);
                 listBoxPath.Items.Clear();
 
                 if (path.Status == 0)
-                {              
+                {
                     for (int i = 0; i < path.Data.Length; i++)
-                    {                       
+                    {
                         listBoxPath.Items.Add(client.getLocation((int)path.Data[i].locationID).Data);
                     }
                 }
@@ -317,12 +306,39 @@ namespace CoreForm
             }
 
             listBoxBillOfLading.SelectedIndex = i - 1;
-            listBoxBillOfLading_SelectedIndexChanged(this, null);
+            listBoxBillOfLading_SelectedIndexChanged_1(this, null);
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void checkBoxReverseRoute_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBoxReverseRoute.Checked == true)
+            {
+                checkBoxReturnEmpty.Checked = false;
+                checkBoxReturnEmpty.Enabled = false;
+            }
+            else
+            {
+                checkBoxReturnEmpty.Enabled = true;
+            }
+        }
+
+        private void checkBoxReturnEmpty_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBoxReturnEmpty.Checked == true)
+            {
+                checkBoxReverseRoute.Checked = false;
+                checkBoxReverseRoute.Enabled = false;
+
+            }
+            else
+            {
+                checkBoxReverseRoute.Enabled = true;
+            }
         }
     }
 }

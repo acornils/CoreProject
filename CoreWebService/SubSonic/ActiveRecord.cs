@@ -1461,948 +1461,6 @@ namespace Core
     
     
     /// <summary>
-    /// A class which represents the BillOfLading table in the Core Database.
-    /// </summary>
-    public partial class BillOfLading: IActiveRecord
-    {
-    
-        #region Built-in testing
-        static TestRepository<BillOfLading> _testRepo;
-        
-
-        
-        static void SetTestRepo(){
-            _testRepo = _testRepo ?? new TestRepository<BillOfLading>(new Core.CoreDB());
-        }
-        public static void ResetTestRepo(){
-            _testRepo = null;
-            SetTestRepo();
-        }
-        public static void Setup(List<BillOfLading> testlist){
-            SetTestRepo();
-            foreach (var item in testlist)
-            {
-                _testRepo._items.Add(item);
-            }
-        }
-        public static void Setup(BillOfLading item) {
-            SetTestRepo();
-            _testRepo._items.Add(item);
-        }
-        public static void Setup(int testItems) {
-            SetTestRepo();
-            for(int i=0;i<testItems;i++){
-                BillOfLading item=new BillOfLading();
-                _testRepo._items.Add(item);
-            }
-        }
-        
-        public bool TestMode = false;
-
-
-        #endregion
-
-        IRepository<BillOfLading> _repo;
-        ITable tbl;
-        bool _isNew;
-        public bool IsNew(){
-            return _isNew;
-        }
-        
-        public void SetIsLoaded(bool isLoaded){
-            _isLoaded=isLoaded;
-            if(isLoaded)
-                OnLoaded();
-        }
-        
-        public void SetIsNew(bool isNew){
-            _isNew=isNew;
-        }
-        bool _isLoaded;
-        public bool IsLoaded(){
-            return _isLoaded;
-        }
-                
-        List<IColumn> _dirtyColumns;
-        public bool IsDirty(){
-            return _dirtyColumns.Count>0;
-        }
-        
-        public List<IColumn> GetDirtyColumns (){
-            return _dirtyColumns;
-        }
-
-        Core.CoreDB _db;
-        public BillOfLading(string connectionString, string providerName) {
-
-            _db=new Core.CoreDB(connectionString, providerName);
-            Init();            
-         }
-        void Init(){
-            TestMode=this._db.DataProvider.ConnectionString.Equals("test", StringComparison.InvariantCultureIgnoreCase);
-            _dirtyColumns=new List<IColumn>();
-            if(TestMode){
-                BillOfLading.SetTestRepo();
-                _repo=_testRepo;
-            }else{
-                _repo = new SubSonicRepository<BillOfLading>(_db);
-            }
-            tbl=_repo.GetTable();
-            SetIsNew(true);
-            OnCreated();       
-
-        }
-        
-        public BillOfLading(){
-             _db=new Core.CoreDB();
-            Init();            
-        }
-        
-       
-        partial void OnCreated();
-            
-        partial void OnLoaded();
-        
-        partial void OnSaved();
-        
-        partial void OnChanged();
-        
-        public IList<IColumn> Columns{
-            get{
-                return tbl.Columns;
-            }
-        }
-
-        public BillOfLading(Expression<Func<BillOfLading, bool>> expression):this() {
-
-            SetIsLoaded(_repo.Load(this,expression));
-        }
-        
-       
-        
-        internal static IRepository<BillOfLading> GetRepo(string connectionString, string providerName){
-            Core.CoreDB db;
-            if(String.IsNullOrEmpty(connectionString)){
-                db=new Core.CoreDB();
-            }else{
-                db=new Core.CoreDB(connectionString, providerName);
-            }
-            IRepository<BillOfLading> _repo;
-            
-            if(db.TestMode){
-                BillOfLading.SetTestRepo();
-                _repo=_testRepo;
-            }else{
-                _repo = new SubSonicRepository<BillOfLading>(db);
-            }
-            return _repo;        
-        }       
-        
-        internal static IRepository<BillOfLading> GetRepo(){
-            return GetRepo("","");
-        }
-        
-        public static BillOfLading SingleOrDefault(Expression<Func<BillOfLading, bool>> expression) {
-
-            var repo = GetRepo();
-            var results=repo.Find(expression);
-            BillOfLading single=null;
-            if(results.Count() > 0){
-                single=results.ToList()[0];
-                single.OnLoaded();
-                single.SetIsLoaded(true);
-                single.SetIsNew(false);
-            }
-
-            return single;
-        }      
-        
-        public static BillOfLading SingleOrDefault(Expression<Func<BillOfLading, bool>> expression,string connectionString, string providerName) {
-            var repo = GetRepo(connectionString,providerName);
-            var results=repo.Find(expression);
-            BillOfLading single=null;
-            if(results.Count() > 0){
-                single=results.ToList()[0];
-            }
-
-            return single;
-
-
-        }
-        
-        
-        public static bool Exists(Expression<Func<BillOfLading, bool>> expression,string connectionString, string providerName) {
-           
-            return All(connectionString,providerName).Any(expression);
-        }        
-        public static bool Exists(Expression<Func<BillOfLading, bool>> expression) {
-           
-            return All().Any(expression);
-        }        
-
-        public static IList<BillOfLading> Find(Expression<Func<BillOfLading, bool>> expression) {
-            
-            var repo = GetRepo();
-            return repo.Find(expression).ToList();
-        }
-        
-        public static IList<BillOfLading> Find(Expression<Func<BillOfLading, bool>> expression,string connectionString, string providerName) {
-
-            var repo = GetRepo(connectionString,providerName);
-            return repo.Find(expression).ToList();
-
-        }
-        public static IQueryable<BillOfLading> All(string connectionString, string providerName) {
-            return GetRepo(connectionString,providerName).GetAll();
-        }
-        public static IQueryable<BillOfLading> All() {
-            return GetRepo().GetAll();
-        }
-        
-        public static PagedList<BillOfLading> GetPaged(string sortBy, int pageIndex, int pageSize,string connectionString, string providerName) {
-            return GetRepo(connectionString,providerName).GetPaged(sortBy, pageIndex, pageSize);
-        }
-      
-        public static PagedList<BillOfLading> GetPaged(string sortBy, int pageIndex, int pageSize) {
-            return GetRepo().GetPaged(sortBy, pageIndex, pageSize);
-        }
-
-        public static PagedList<BillOfLading> GetPaged(int pageIndex, int pageSize,string connectionString, string providerName) {
-            return GetRepo(connectionString,providerName).GetPaged(pageIndex, pageSize);
-            
-        }
-
-
-        public static PagedList<BillOfLading> GetPaged(int pageIndex, int pageSize) {
-            return GetRepo().GetPaged(pageIndex, pageSize);
-            
-        }
-
-        public string KeyName()
-        {
-            return "ID";
-        }
-
-        public object KeyValue()
-        {
-            return this.ID;
-        }
-        
-        public void SetKeyValue(object value) {
-            if (value != null && value!=DBNull.Value) {
-                var settable = value.ChangeTypeTo<int>();
-                this.GetType().GetProperty(this.KeyName()).SetValue(this, settable, null);
-            }
-        }
-        
-        public override string ToString(){
-                            return this.noPackages.ToString();
-                    }
-
-        public override bool Equals(object obj){
-            if(obj.GetType()==typeof(BillOfLading)){
-                BillOfLading compare=(BillOfLading)obj;
-                return compare.KeyValue()==this.KeyValue();
-            }else{
-                return base.Equals(obj);
-            }
-        }
-
-        
-        public override int GetHashCode() {
-            return this.ID;
-        }
-        
-        public string DescriptorValue()
-        {
-                            return this.noPackages.ToString();
-                    }
-
-        public string DescriptorColumn() {
-            return "noPackages";
-        }
-        public static string GetKeyColumn()
-        {
-            return "ID";
-        }        
-        public static string GetDescriptorColumn()
-        {
-            return "noPackages";
-        }
-        
-        #region ' Foreign Keys '
-        #endregion
-        
-
-        int _ID;
-        public int ID
-        {
-            get { return _ID; }
-            set
-            {
-                if(_ID!=value){
-                    _ID=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="ID");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        int? _consigneeID;
-        public int? consigneeID
-        {
-            get { return _consigneeID; }
-            set
-            {
-                if(_consigneeID!=value){
-                    _consigneeID=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="consigneeID");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        int? _shipperID;
-        public int? shipperID
-        {
-            get { return _shipperID; }
-            set
-            {
-                if(_shipperID!=value){
-                    _shipperID=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="shipperID");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        int? _carTypeRequestedID;
-        public int? carTypeRequestedID
-        {
-            get { return _carTypeRequestedID; }
-            set
-            {
-                if(_carTypeRequestedID!=value){
-                    _carTypeRequestedID=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="carTypeRequestedID");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        int? _carLengthRequested;
-        public int? carLengthRequested
-        {
-            get { return _carLengthRequested; }
-            set
-            {
-                if(_carLengthRequested!=value){
-                    _carLengthRequested=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="carLengthRequested");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        int? _carCapacityRequested;
-        public int? carCapacityRequested
-        {
-            get { return _carCapacityRequested; }
-            set
-            {
-                if(_carCapacityRequested!=value){
-                    _carCapacityRequested=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="carCapacityRequested");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        string _noPackages;
-        public string noPackages
-        {
-            get { return _noPackages; }
-            set
-            {
-                if(_noPackages!=value){
-                    _noPackages=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="noPackages");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        string _descriptionOfArticles;
-        public string descriptionOfArticles
-        {
-            get { return _descriptionOfArticles; }
-            set
-            {
-                if(_descriptionOfArticles!=value){
-                    _descriptionOfArticles=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="descriptionOfArticles");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        string _displayText;
-        public string displayText
-        {
-            get { return _displayText; }
-            set
-            {
-                if(_displayText!=value){
-                    _displayText=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="displayText");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        bool? _isPerishable;
-        public bool? isPerishable
-        {
-            get { return _isPerishable; }
-            set
-            {
-                if(_isPerishable!=value){
-                    _isPerishable=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="isPerishable");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        bool? _isPreIce;
-        public bool? isPreIce
-        {
-            get { return _isPreIce; }
-            set
-            {
-                if(_isPreIce!=value){
-                    _isPreIce=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="isPreIce");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        bool? _isInitialIce;
-        public bool? isInitialIce
-        {
-            get { return _isInitialIce; }
-            set
-            {
-                if(_isInitialIce!=value){
-                    _isInitialIce=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="isInitialIce");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        int? _cps;
-        public int? cps
-        {
-            get { return _cps; }
-            set
-            {
-                if(_cps!=value){
-                    _cps=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="cps");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        bool? _isEmptyCarRequested;
-        public bool? isEmptyCarRequested
-        {
-            get { return _isEmptyCarRequested; }
-            set
-            {
-                if(_isEmptyCarRequested!=value){
-                    _isEmptyCarRequested=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="isEmptyCarRequested");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        bool? _isLiveStock;
-        public bool? isLiveStock
-        {
-            get { return _isLiveStock; }
-            set
-            {
-                if(_isLiveStock!=value){
-                    _isLiveStock=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="isLiveStock");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        bool? _isReverseRoute;
-        public bool? isReverseRoute
-        {
-            get { return _isReverseRoute; }
-            set
-            {
-                if(_isReverseRoute!=value){
-                    _isReverseRoute=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="isReverseRoute");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        bool? _isReturnEmpty;
-        public bool? isReturnEmpty
-        {
-            get { return _isReturnEmpty; }
-            set
-            {
-                if(_isReturnEmpty!=value){
-                    _isReturnEmpty=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="isReturnEmpty");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        bool? _isNextBillOfLading;
-        public bool? isNextBillOfLading
-        {
-            get { return _isNextBillOfLading; }
-            set
-            {
-                if(_isNextBillOfLading!=value){
-                    _isNextBillOfLading=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="isNextBillOfLading");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        int? _nextBillOfLadingID;
-        public int? nextBillOfLadingID
-        {
-            get { return _nextBillOfLadingID; }
-            set
-            {
-                if(_nextBillOfLadingID!=value){
-                    _nextBillOfLadingID=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="nextBillOfLadingID");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        decimal? _requestedCarsPerDay;
-        public decimal? requestedCarsPerDay
-        {
-            get { return _requestedCarsPerDay; }
-            set
-            {
-                if(_requestedCarsPerDay!=value){
-                    _requestedCarsPerDay=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="requestedCarsPerDay");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        int? _timeToUnload;
-        public int? timeToUnload
-        {
-            get { return _timeToUnload; }
-            set
-            {
-                if(_timeToUnload!=value){
-                    _timeToUnload=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="timeToUnload");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        int? _timeToLoad;
-        public int? timeToLoad
-        {
-            get { return _timeToLoad; }
-            set
-            {
-                if(_timeToLoad!=value){
-                    _timeToLoad=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="timeToLoad");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        bool? _isTemplateActive;
-        public bool? isTemplateActive
-        {
-            get { return _isTemplateActive; }
-            set
-            {
-                if(_isTemplateActive!=value){
-                    _isTemplateActive=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="isTemplateActive");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        bool? _isDeleted;
-        public bool? isDeleted
-        {
-            get { return _isDeleted; }
-            set
-            {
-                if(_isDeleted!=value){
-                    _isDeleted=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="isDeleted");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        bool? _isTemplate;
-        public bool? isTemplate
-        {
-            get { return _isTemplate; }
-            set
-            {
-                if(_isTemplate!=value){
-                    _isTemplate=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="isTemplate");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        DateTime? _CreatedOn;
-        public DateTime? CreatedOn
-        {
-            get { return _CreatedOn; }
-            set
-            {
-                if(_CreatedOn!=value){
-                    _CreatedOn=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="CreatedOn");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        int? _RollingStockID;
-        public int? RollingStockID
-        {
-            get { return _RollingStockID; }
-            set
-            {
-                if(_RollingStockID!=value){
-                    _RollingStockID=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="RollingStockID");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-
-
-        public DbCommand GetUpdateCommand() {
-            if(TestMode)
-                return _db.DataProvider.CreateCommand();
-            else
-                return this.ToUpdateQuery(_db.Provider).GetCommand().ToDbCommand();
-            
-        }
-        public DbCommand GetInsertCommand() {
- 
-            if(TestMode)
-                return _db.DataProvider.CreateCommand();
-            else
-                return this.ToInsertQuery(_db.Provider).GetCommand().ToDbCommand();
-        }
-        
-        public DbCommand GetDeleteCommand() {
-            if(TestMode)
-                return _db.DataProvider.CreateCommand();
-            else
-                return this.ToDeleteQuery(_db.Provider).GetCommand().ToDbCommand();
-        }
-       
-        
-        public void Update(){
-            Update(_db.DataProvider);
-        }
-        
-        public void Update(IDataProvider provider){
-        
-            
-            if(this._dirtyColumns.Count>0){
-                _repo.Update(this,provider);
-                _dirtyColumns.Clear();    
-            }
-            OnSaved();
-       }
- 
-        public void Add(){
-            Add(_db.DataProvider);
-        }
-        
-        
-       
-        public void Add(IDataProvider provider){
-
-            
-            this.CreatedOn=CoreDB.DateTimeNowTruncatedDownToSecond();
-            
-            var key=KeyValue();
-            if(key==null){
-                var newKey=_repo.Add(this,provider);
-                this.SetKeyValue(newKey);
-            }else{
-                _repo.Add(this,provider);
-            }
-            SetIsNew(false);
-            OnSaved();
-        }
-        
-                
-        
-        public void Save() {
-            Save(_db.DataProvider);
-        }      
-        public void Save(IDataProvider provider) {
-            
-           
-            if (_isNew) {
-                Add(provider);
-                
-            } else {
-                Update(provider);
-            }
-            
-        }
-
-        
-
-        public void Delete(IDataProvider provider) {
-                         
-             this.isDeleted=true;
-            _repo.Update(this,provider);
-                
-                    }
-
-
-        public void Delete() {
-            Delete(_db.DataProvider);
-        }
-
-
-        public static void Delete(Expression<Func<BillOfLading, bool>> expression) {
-            var repo = GetRepo();
-            
-            
-            List<BillOfLading> items=repo.GetAll().Where(expression).ToList();
-            items.ForEach(x=>x.isDeleted=true);
-            repo.Update(items);
-            
-        }
-
-                
-        public static void Destroy(Func<BillOfLading, bool> expression) {
-            var repo = GetRepo();
-            repo.Delete(expression);
-        }
-        
-        public static void Destroy(object key) {
-            var repo = GetRepo();
-            repo.Delete(key);
-        }
-        
-        public static void Destroy(object key, IDataProvider provider) {
-        
-            var repo = GetRepo();
-            repo.Delete(key,provider);
-            
-        }        
-        
-        public void Destroy() {
-            _repo.Delete(KeyValue());
-        }        
-        public void Destroy(IDataProvider provider) {
-            _repo.Delete(KeyValue(), provider);
-        }         
-        
-
-        public void Load(IDataReader rdr) {
-            Load(rdr, true);
-        }
-        public void Load(IDataReader rdr, bool closeReader) {
-            if (rdr.Read()) {
-
-                try {
-                    rdr.Load(this);
-                    SetIsNew(false);
-                    SetIsLoaded(true);
-                } catch {
-                    SetIsLoaded(false);
-                    throw;
-                }
-            }else{
-                SetIsLoaded(false);
-            }
-
-            if (closeReader)
-                rdr.Dispose();
-        }
-        
-
-    } 
-    
-    
-    /// <summary>
     /// A class which represents the SwitchListsLayouts table in the Core Database.
     /// </summary>
     public partial class SwitchListsLayout: IActiveRecord
@@ -3186,638 +2244,6 @@ namespace Core
 
 
         public static void Delete(Expression<Func<SwitchListsLayout, bool>> expression) {
-            var repo = GetRepo();
-            
-       
-            
-            repo.DeleteMany(expression);
-            
-        }
-
-        
-
-        public void Load(IDataReader rdr) {
-            Load(rdr, true);
-        }
-        public void Load(IDataReader rdr, bool closeReader) {
-            if (rdr.Read()) {
-
-                try {
-                    rdr.Load(this);
-                    SetIsNew(false);
-                    SetIsLoaded(true);
-                } catch {
-                    SetIsLoaded(false);
-                    throw;
-                }
-            }else{
-                SetIsLoaded(false);
-            }
-
-            if (closeReader)
-                rdr.Dispose();
-        }
-        
-
-    } 
-    
-    
-    /// <summary>
-    /// A class which represents the Waybills table in the Core Database.
-    /// </summary>
-    public partial class Waybill: IActiveRecord
-    {
-    
-        #region Built-in testing
-        static TestRepository<Waybill> _testRepo;
-        
-
-        
-        static void SetTestRepo(){
-            _testRepo = _testRepo ?? new TestRepository<Waybill>(new Core.CoreDB());
-        }
-        public static void ResetTestRepo(){
-            _testRepo = null;
-            SetTestRepo();
-        }
-        public static void Setup(List<Waybill> testlist){
-            SetTestRepo();
-            foreach (var item in testlist)
-            {
-                _testRepo._items.Add(item);
-            }
-        }
-        public static void Setup(Waybill item) {
-            SetTestRepo();
-            _testRepo._items.Add(item);
-        }
-        public static void Setup(int testItems) {
-            SetTestRepo();
-            for(int i=0;i<testItems;i++){
-                Waybill item=new Waybill();
-                _testRepo._items.Add(item);
-            }
-        }
-        
-        public bool TestMode = false;
-
-
-        #endregion
-
-        IRepository<Waybill> _repo;
-        ITable tbl;
-        bool _isNew;
-        public bool IsNew(){
-            return _isNew;
-        }
-        
-        public void SetIsLoaded(bool isLoaded){
-            _isLoaded=isLoaded;
-            if(isLoaded)
-                OnLoaded();
-        }
-        
-        public void SetIsNew(bool isNew){
-            _isNew=isNew;
-        }
-        bool _isLoaded;
-        public bool IsLoaded(){
-            return _isLoaded;
-        }
-                
-        List<IColumn> _dirtyColumns;
-        public bool IsDirty(){
-            return _dirtyColumns.Count>0;
-        }
-        
-        public List<IColumn> GetDirtyColumns (){
-            return _dirtyColumns;
-        }
-
-        Core.CoreDB _db;
-        public Waybill(string connectionString, string providerName) {
-
-            _db=new Core.CoreDB(connectionString, providerName);
-            Init();            
-         }
-        void Init(){
-            TestMode=this._db.DataProvider.ConnectionString.Equals("test", StringComparison.InvariantCultureIgnoreCase);
-            _dirtyColumns=new List<IColumn>();
-            if(TestMode){
-                Waybill.SetTestRepo();
-                _repo=_testRepo;
-            }else{
-                _repo = new SubSonicRepository<Waybill>(_db);
-            }
-            tbl=_repo.GetTable();
-            SetIsNew(true);
-            OnCreated();       
-
-        }
-        
-        public Waybill(){
-             _db=new Core.CoreDB();
-            Init();            
-        }
-        
-       
-        partial void OnCreated();
-            
-        partial void OnLoaded();
-        
-        partial void OnSaved();
-        
-        partial void OnChanged();
-        
-        public IList<IColumn> Columns{
-            get{
-                return tbl.Columns;
-            }
-        }
-
-        public Waybill(Expression<Func<Waybill, bool>> expression):this() {
-
-            SetIsLoaded(_repo.Load(this,expression));
-        }
-        
-       
-        
-        internal static IRepository<Waybill> GetRepo(string connectionString, string providerName){
-            Core.CoreDB db;
-            if(String.IsNullOrEmpty(connectionString)){
-                db=new Core.CoreDB();
-            }else{
-                db=new Core.CoreDB(connectionString, providerName);
-            }
-            IRepository<Waybill> _repo;
-            
-            if(db.TestMode){
-                Waybill.SetTestRepo();
-                _repo=_testRepo;
-            }else{
-                _repo = new SubSonicRepository<Waybill>(db);
-            }
-            return _repo;        
-        }       
-        
-        internal static IRepository<Waybill> GetRepo(){
-            return GetRepo("","");
-        }
-        
-        public static Waybill SingleOrDefault(Expression<Func<Waybill, bool>> expression) {
-
-            var repo = GetRepo();
-            var results=repo.Find(expression);
-            Waybill single=null;
-            if(results.Count() > 0){
-                single=results.ToList()[0];
-                single.OnLoaded();
-                single.SetIsLoaded(true);
-                single.SetIsNew(false);
-            }
-
-            return single;
-        }      
-        
-        public static Waybill SingleOrDefault(Expression<Func<Waybill, bool>> expression,string connectionString, string providerName) {
-            var repo = GetRepo(connectionString,providerName);
-            var results=repo.Find(expression);
-            Waybill single=null;
-            if(results.Count() > 0){
-                single=results.ToList()[0];
-            }
-
-            return single;
-
-
-        }
-        
-        
-        public static bool Exists(Expression<Func<Waybill, bool>> expression,string connectionString, string providerName) {
-           
-            return All(connectionString,providerName).Any(expression);
-        }        
-        public static bool Exists(Expression<Func<Waybill, bool>> expression) {
-           
-            return All().Any(expression);
-        }        
-
-        public static IList<Waybill> Find(Expression<Func<Waybill, bool>> expression) {
-            
-            var repo = GetRepo();
-            return repo.Find(expression).ToList();
-        }
-        
-        public static IList<Waybill> Find(Expression<Func<Waybill, bool>> expression,string connectionString, string providerName) {
-
-            var repo = GetRepo(connectionString,providerName);
-            return repo.Find(expression).ToList();
-
-        }
-        public static IQueryable<Waybill> All(string connectionString, string providerName) {
-            return GetRepo(connectionString,providerName).GetAll();
-        }
-        public static IQueryable<Waybill> All() {
-            return GetRepo().GetAll();
-        }
-        
-        public static PagedList<Waybill> GetPaged(string sortBy, int pageIndex, int pageSize,string connectionString, string providerName) {
-            return GetRepo(connectionString,providerName).GetPaged(sortBy, pageIndex, pageSize);
-        }
-      
-        public static PagedList<Waybill> GetPaged(string sortBy, int pageIndex, int pageSize) {
-            return GetRepo().GetPaged(sortBy, pageIndex, pageSize);
-        }
-
-        public static PagedList<Waybill> GetPaged(int pageIndex, int pageSize,string connectionString, string providerName) {
-            return GetRepo(connectionString,providerName).GetPaged(pageIndex, pageSize);
-            
-        }
-
-
-        public static PagedList<Waybill> GetPaged(int pageIndex, int pageSize) {
-            return GetRepo().GetPaged(pageIndex, pageSize);
-            
-        }
-
-        public string KeyName()
-        {
-            return "ID";
-        }
-
-        public object KeyValue()
-        {
-            return this.ID;
-        }
-        
-        public void SetKeyValue(object value) {
-            if (value != null && value!=DBNull.Value) {
-                var settable = value.ChangeTypeTo<int>();
-                this.GetType().GetProperty(this.KeyName()).SetValue(this, settable, null);
-            }
-        }
-        
-        public override string ToString(){
-                            return this.billOfLadingID.ToString();
-                    }
-
-        public override bool Equals(object obj){
-            if(obj.GetType()==typeof(Waybill)){
-                Waybill compare=(Waybill)obj;
-                return compare.KeyValue()==this.KeyValue();
-            }else{
-                return base.Equals(obj);
-            }
-        }
-
-        
-        public override int GetHashCode() {
-            return this.ID;
-        }
-        
-        public string DescriptorValue()
-        {
-                            return this.billOfLadingID.ToString();
-                    }
-
-        public string DescriptorColumn() {
-            return "billOfLadingID";
-        }
-        public static string GetKeyColumn()
-        {
-            return "ID";
-        }        
-        public static string GetDescriptorColumn()
-        {
-            return "billOfLadingID";
-        }
-        
-        #region ' Foreign Keys '
-        #endregion
-        
-
-        int _ID;
-        public int ID
-        {
-            get { return _ID; }
-            set
-            {
-                if(_ID!=value){
-                    _ID=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="ID");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        int? _billOfLadingID;
-        public int? billOfLadingID
-        {
-            get { return _billOfLadingID; }
-            set
-            {
-                if(_billOfLadingID!=value){
-                    _billOfLadingID=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="billOfLadingID");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        DateTime? _loadedAt;
-        public DateTime? loadedAt
-        {
-            get { return _loadedAt; }
-            set
-            {
-                if(_loadedAt!=value){
-                    _loadedAt=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="loadedAt");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        DateTime? _unloadedAt;
-        public DateTime? unloadedAt
-        {
-            get { return _unloadedAt; }
-            set
-            {
-                if(_unloadedAt!=value){
-                    _unloadedAt=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="unloadedAt");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        DateTime? _preIcedAt;
-        public DateTime? preIcedAt
-        {
-            get { return _preIcedAt; }
-            set
-            {
-                if(_preIcedAt!=value){
-                    _preIcedAt=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="preIcedAt");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        DateTime? _initialIcedAt;
-        public DateTime? initialIcedAt
-        {
-            get { return _initialIcedAt; }
-            set
-            {
-                if(_initialIcedAt!=value){
-                    _initialIcedAt=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="initialIcedAt");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        bool? _isWeighed;
-        public bool? isWeighed
-        {
-            get { return _isWeighed; }
-            set
-            {
-                if(_isWeighed!=value){
-                    _isWeighed=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="isWeighed");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        int? _weight;
-        public int? weight
-        {
-            get { return _weight; }
-            set
-            {
-                if(_weight!=value){
-                    _weight=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="weight");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        int _onSpotAtShipper;
-        public int onSpotAtShipper
-        {
-            get { return _onSpotAtShipper; }
-            set
-            {
-                if(_onSpotAtShipper!=value){
-                    _onSpotAtShipper=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="onSpotAtShipper");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        int _onSpotAtConsignee;
-        public int onSpotAtConsignee
-        {
-            get { return _onSpotAtConsignee; }
-            set
-            {
-                if(_onSpotAtConsignee!=value){
-                    _onSpotAtConsignee=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="onSpotAtConsignee");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        bool _isEmptyWayBill;
-        public bool isEmptyWayBill
-        {
-            get { return _isEmptyWayBill; }
-            set
-            {
-                if(_isEmptyWayBill!=value){
-                    _isEmptyWayBill=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="isEmptyWayBill");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-        DateTime? _CreatedOn;
-        public DateTime? CreatedOn
-        {
-            get { return _CreatedOn; }
-            set
-            {
-                if(_CreatedOn!=value){
-                    _CreatedOn=value;
-                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="CreatedOn");
-                    if(col!=null){
-                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
-                            _dirtyColumns.Add(col);
-                        }
-                    }
-                    OnChanged();
-                }
-            }
-        }
-
-
-
-        public DbCommand GetUpdateCommand() {
-            if(TestMode)
-                return _db.DataProvider.CreateCommand();
-            else
-                return this.ToUpdateQuery(_db.Provider).GetCommand().ToDbCommand();
-            
-        }
-        public DbCommand GetInsertCommand() {
- 
-            if(TestMode)
-                return _db.DataProvider.CreateCommand();
-            else
-                return this.ToInsertQuery(_db.Provider).GetCommand().ToDbCommand();
-        }
-        
-        public DbCommand GetDeleteCommand() {
-            if(TestMode)
-                return _db.DataProvider.CreateCommand();
-            else
-                return this.ToDeleteQuery(_db.Provider).GetCommand().ToDbCommand();
-        }
-       
-        
-        public void Update(){
-            Update(_db.DataProvider);
-        }
-        
-        public void Update(IDataProvider provider){
-        
-            
-            if(this._dirtyColumns.Count>0){
-                _repo.Update(this,provider);
-                _dirtyColumns.Clear();    
-            }
-            OnSaved();
-       }
- 
-        public void Add(){
-            Add(_db.DataProvider);
-        }
-        
-        
-       
-        public void Add(IDataProvider provider){
-
-            
-            this.CreatedOn=CoreDB.DateTimeNowTruncatedDownToSecond();
-            
-            var key=KeyValue();
-            if(key==null){
-                var newKey=_repo.Add(this,provider);
-                this.SetKeyValue(newKey);
-            }else{
-                _repo.Add(this,provider);
-            }
-            SetIsNew(false);
-            OnSaved();
-        }
-        
-                
-        
-        public void Save() {
-            Save(_db.DataProvider);
-        }      
-        public void Save(IDataProvider provider) {
-            
-           
-            if (_isNew) {
-                Add(provider);
-                
-            } else {
-                Update(provider);
-            }
-            
-        }
-
-        
-
-        public void Delete(IDataProvider provider) {
-                   
-                 
-            _repo.Delete(KeyValue());
-            
-                    }
-
-
-        public void Delete() {
-            Delete(_db.DataProvider);
-        }
-
-
-        public static void Delete(Expression<Func<Waybill, bool>> expression) {
             var repo = GetRepo();
             
        
@@ -6468,6 +4894,816 @@ namespace Core
     
     
     /// <summary>
+    /// A class which represents the Waybills table in the Core Database.
+    /// </summary>
+    public partial class Waybill: IActiveRecord
+    {
+    
+        #region Built-in testing
+        static TestRepository<Waybill> _testRepo;
+        
+
+        
+        static void SetTestRepo(){
+            _testRepo = _testRepo ?? new TestRepository<Waybill>(new Core.CoreDB());
+        }
+        public static void ResetTestRepo(){
+            _testRepo = null;
+            SetTestRepo();
+        }
+        public static void Setup(List<Waybill> testlist){
+            SetTestRepo();
+            foreach (var item in testlist)
+            {
+                _testRepo._items.Add(item);
+            }
+        }
+        public static void Setup(Waybill item) {
+            SetTestRepo();
+            _testRepo._items.Add(item);
+        }
+        public static void Setup(int testItems) {
+            SetTestRepo();
+            for(int i=0;i<testItems;i++){
+                Waybill item=new Waybill();
+                _testRepo._items.Add(item);
+            }
+        }
+        
+        public bool TestMode = false;
+
+
+        #endregion
+
+        IRepository<Waybill> _repo;
+        ITable tbl;
+        bool _isNew;
+        public bool IsNew(){
+            return _isNew;
+        }
+        
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+            if(isLoaded)
+                OnLoaded();
+        }
+        
+        public void SetIsNew(bool isNew){
+            _isNew=isNew;
+        }
+        bool _isLoaded;
+        public bool IsLoaded(){
+            return _isLoaded;
+        }
+                
+        List<IColumn> _dirtyColumns;
+        public bool IsDirty(){
+            return _dirtyColumns.Count>0;
+        }
+        
+        public List<IColumn> GetDirtyColumns (){
+            return _dirtyColumns;
+        }
+
+        Core.CoreDB _db;
+        public Waybill(string connectionString, string providerName) {
+
+            _db=new Core.CoreDB(connectionString, providerName);
+            Init();            
+         }
+        void Init(){
+            TestMode=this._db.DataProvider.ConnectionString.Equals("test", StringComparison.InvariantCultureIgnoreCase);
+            _dirtyColumns=new List<IColumn>();
+            if(TestMode){
+                Waybill.SetTestRepo();
+                _repo=_testRepo;
+            }else{
+                _repo = new SubSonicRepository<Waybill>(_db);
+            }
+            tbl=_repo.GetTable();
+            SetIsNew(true);
+            OnCreated();       
+
+        }
+        
+        public Waybill(){
+             _db=new Core.CoreDB();
+            Init();            
+        }
+        
+       
+        partial void OnCreated();
+            
+        partial void OnLoaded();
+        
+        partial void OnSaved();
+        
+        partial void OnChanged();
+        
+        public IList<IColumn> Columns{
+            get{
+                return tbl.Columns;
+            }
+        }
+
+        public Waybill(Expression<Func<Waybill, bool>> expression):this() {
+
+            SetIsLoaded(_repo.Load(this,expression));
+        }
+        
+       
+        
+        internal static IRepository<Waybill> GetRepo(string connectionString, string providerName){
+            Core.CoreDB db;
+            if(String.IsNullOrEmpty(connectionString)){
+                db=new Core.CoreDB();
+            }else{
+                db=new Core.CoreDB(connectionString, providerName);
+            }
+            IRepository<Waybill> _repo;
+            
+            if(db.TestMode){
+                Waybill.SetTestRepo();
+                _repo=_testRepo;
+            }else{
+                _repo = new SubSonicRepository<Waybill>(db);
+            }
+            return _repo;        
+        }       
+        
+        internal static IRepository<Waybill> GetRepo(){
+            return GetRepo("","");
+        }
+        
+        public static Waybill SingleOrDefault(Expression<Func<Waybill, bool>> expression) {
+
+            var repo = GetRepo();
+            var results=repo.Find(expression);
+            Waybill single=null;
+            if(results.Count() > 0){
+                single=results.ToList()[0];
+                single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
+
+            return single;
+        }      
+        
+        public static Waybill SingleOrDefault(Expression<Func<Waybill, bool>> expression,string connectionString, string providerName) {
+            var repo = GetRepo(connectionString,providerName);
+            var results=repo.Find(expression);
+            Waybill single=null;
+            if(results.Count() > 0){
+                single=results.ToList()[0];
+            }
+
+            return single;
+
+
+        }
+        
+        
+        public static bool Exists(Expression<Func<Waybill, bool>> expression,string connectionString, string providerName) {
+           
+            return All(connectionString,providerName).Any(expression);
+        }        
+        public static bool Exists(Expression<Func<Waybill, bool>> expression) {
+           
+            return All().Any(expression);
+        }        
+
+        public static IList<Waybill> Find(Expression<Func<Waybill, bool>> expression) {
+            
+            var repo = GetRepo();
+            return repo.Find(expression).ToList();
+        }
+        
+        public static IList<Waybill> Find(Expression<Func<Waybill, bool>> expression,string connectionString, string providerName) {
+
+            var repo = GetRepo(connectionString,providerName);
+            return repo.Find(expression).ToList();
+
+        }
+        public static IQueryable<Waybill> All(string connectionString, string providerName) {
+            return GetRepo(connectionString,providerName).GetAll();
+        }
+        public static IQueryable<Waybill> All() {
+            return GetRepo().GetAll();
+        }
+        
+        public static PagedList<Waybill> GetPaged(string sortBy, int pageIndex, int pageSize,string connectionString, string providerName) {
+            return GetRepo(connectionString,providerName).GetPaged(sortBy, pageIndex, pageSize);
+        }
+      
+        public static PagedList<Waybill> GetPaged(string sortBy, int pageIndex, int pageSize) {
+            return GetRepo().GetPaged(sortBy, pageIndex, pageSize);
+        }
+
+        public static PagedList<Waybill> GetPaged(int pageIndex, int pageSize,string connectionString, string providerName) {
+            return GetRepo(connectionString,providerName).GetPaged(pageIndex, pageSize);
+            
+        }
+
+
+        public static PagedList<Waybill> GetPaged(int pageIndex, int pageSize) {
+            return GetRepo().GetPaged(pageIndex, pageSize);
+            
+        }
+
+        public string KeyName()
+        {
+            return "ID";
+        }
+
+        public object KeyValue()
+        {
+            return this.ID;
+        }
+        
+        public void SetKeyValue(object value) {
+            if (value != null && value!=DBNull.Value) {
+                var settable = value.ChangeTypeTo<int>();
+                this.GetType().GetProperty(this.KeyName()).SetValue(this, settable, null);
+            }
+        }
+        
+        public override string ToString(){
+                            return this.billOfLadingID.ToString();
+                    }
+
+        public override bool Equals(object obj){
+            if(obj.GetType()==typeof(Waybill)){
+                Waybill compare=(Waybill)obj;
+                return compare.KeyValue()==this.KeyValue();
+            }else{
+                return base.Equals(obj);
+            }
+        }
+
+        
+        public override int GetHashCode() {
+            return this.ID;
+        }
+        
+        public string DescriptorValue()
+        {
+                            return this.billOfLadingID.ToString();
+                    }
+
+        public string DescriptorColumn() {
+            return "billOfLadingID";
+        }
+        public static string GetKeyColumn()
+        {
+            return "ID";
+        }        
+        public static string GetDescriptorColumn()
+        {
+            return "billOfLadingID";
+        }
+        
+        #region ' Foreign Keys '
+        #endregion
+        
+
+        int _ID;
+        public int ID
+        {
+            get { return _ID; }
+            set
+            {
+                if(_ID!=value){
+                    _ID=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="ID");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        int? _billOfLadingID;
+        public int? billOfLadingID
+        {
+            get { return _billOfLadingID; }
+            set
+            {
+                if(_billOfLadingID!=value){
+                    _billOfLadingID=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="billOfLadingID");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        int? _consigneeID;
+        public int? consigneeID
+        {
+            get { return _consigneeID; }
+            set
+            {
+                if(_consigneeID!=value){
+                    _consigneeID=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="consigneeID");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        int? _shipperID;
+        public int? shipperID
+        {
+            get { return _shipperID; }
+            set
+            {
+                if(_shipperID!=value){
+                    _shipperID=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="shipperID");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        int? _assignedRollingStockID;
+        public int? assignedRollingStockID
+        {
+            get { return _assignedRollingStockID; }
+            set
+            {
+                if(_assignedRollingStockID!=value){
+                    _assignedRollingStockID=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="assignedRollingStockID");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        DateTime? _loadedAt;
+        public DateTime? loadedAt
+        {
+            get { return _loadedAt; }
+            set
+            {
+                if(_loadedAt!=value){
+                    _loadedAt=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="loadedAt");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        DateTime? _unloadedAt;
+        public DateTime? unloadedAt
+        {
+            get { return _unloadedAt; }
+            set
+            {
+                if(_unloadedAt!=value){
+                    _unloadedAt=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="unloadedAt");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        DateTime? _preIcedAt;
+        public DateTime? preIcedAt
+        {
+            get { return _preIcedAt; }
+            set
+            {
+                if(_preIcedAt!=value){
+                    _preIcedAt=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="preIcedAt");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        DateTime? _initialIcedAt;
+        public DateTime? initialIcedAt
+        {
+            get { return _initialIcedAt; }
+            set
+            {
+                if(_initialIcedAt!=value){
+                    _initialIcedAt=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="initialIcedAt");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        bool? _isWeighed;
+        public bool? isWeighed
+        {
+            get { return _isWeighed; }
+            set
+            {
+                if(_isWeighed!=value){
+                    _isWeighed=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="isWeighed");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        int? _weight;
+        public int? weight
+        {
+            get { return _weight; }
+            set
+            {
+                if(_weight!=value){
+                    _weight=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="weight");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        int _onSpotAtShipper;
+        public int onSpotAtShipper
+        {
+            get { return _onSpotAtShipper; }
+            set
+            {
+                if(_onSpotAtShipper!=value){
+                    _onSpotAtShipper=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="onSpotAtShipper");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        int _onSpotAtConsignee;
+        public int onSpotAtConsignee
+        {
+            get { return _onSpotAtConsignee; }
+            set
+            {
+                if(_onSpotAtConsignee!=value){
+                    _onSpotAtConsignee=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="onSpotAtConsignee");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        bool _isPerishableWaybill;
+        public bool isPerishableWaybill
+        {
+            get { return _isPerishableWaybill; }
+            set
+            {
+                if(_isPerishableWaybill!=value){
+                    _isPerishableWaybill=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="isPerishableWaybill");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        bool _isLiveStockWaybill;
+        public bool isLiveStockWaybill
+        {
+            get { return _isLiveStockWaybill; }
+            set
+            {
+                if(_isLiveStockWaybill!=value){
+                    _isLiveStockWaybill=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="isLiveStockWaybill");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        bool _isEmptyWayBill;
+        public bool isEmptyWayBill
+        {
+            get { return _isEmptyWayBill; }
+            set
+            {
+                if(_isEmptyWayBill!=value){
+                    _isEmptyWayBill=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="isEmptyWayBill");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        int? _waybillOrder;
+        public int? waybillOrder
+        {
+            get { return _waybillOrder; }
+            set
+            {
+                if(_waybillOrder!=value){
+                    _waybillOrder=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="waybillOrder");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        bool? _isDeleted;
+        public bool? isDeleted
+        {
+            get { return _isDeleted; }
+            set
+            {
+                if(_isDeleted!=value){
+                    _isDeleted=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="isDeleted");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        DateTime? _createdOn;
+        public DateTime? createdOn
+        {
+            get { return _createdOn; }
+            set
+            {
+                if(_createdOn!=value){
+                    _createdOn=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="createdOn");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        DateTime? _modifiedOn;
+        public DateTime? modifiedOn
+        {
+            get { return _modifiedOn; }
+            set
+            {
+                if(_modifiedOn!=value){
+                    _modifiedOn=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="modifiedOn");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+
+
+        public DbCommand GetUpdateCommand() {
+            if (!_dirtyColumns.Any(x => x.Name.ToLower() == "modifiedon")) {
+               this.modifiedOn=CoreDB.DateTimeNowTruncatedDownToSecond();
+            }            
+            if(TestMode)
+                return _db.DataProvider.CreateCommand();
+            else
+                return this.ToUpdateQuery(_db.Provider).GetCommand().ToDbCommand();
+            
+        }
+        public DbCommand GetInsertCommand() {
+ 
+            if(TestMode)
+                return _db.DataProvider.CreateCommand();
+            else
+                return this.ToInsertQuery(_db.Provider).GetCommand().ToDbCommand();
+        }
+        
+        public DbCommand GetDeleteCommand() {
+            if(TestMode)
+                return _db.DataProvider.CreateCommand();
+            else
+                return this.ToDeleteQuery(_db.Provider).GetCommand().ToDbCommand();
+        }
+       
+        
+        public void Update(){
+            Update(_db.DataProvider);
+        }
+        
+        public void Update(IDataProvider provider){
+        
+            
+            if(this._dirtyColumns.Count>0){
+                _repo.Update(this,provider);
+                _dirtyColumns.Clear();    
+            }
+            OnSaved();
+       }
+ 
+        public void Add(){
+            Add(_db.DataProvider);
+        }
+        
+        
+       
+        public void Add(IDataProvider provider){
+
+            
+            var key=KeyValue();
+            if(key==null){
+                var newKey=_repo.Add(this,provider);
+                this.SetKeyValue(newKey);
+            }else{
+                _repo.Add(this,provider);
+            }
+            SetIsNew(false);
+            OnSaved();
+        }
+        
+                
+        
+        public void Save() {
+            Save(_db.DataProvider);
+        }      
+        public void Save(IDataProvider provider) {
+            
+           
+            if (_isNew) {
+                Add(provider);
+                
+            } else {
+                Update(provider);
+            }
+            
+        }
+
+        
+
+        public void Delete(IDataProvider provider) {
+                         
+             this.isDeleted=true;
+            _repo.Update(this,provider);
+                
+                    }
+
+
+        public void Delete() {
+            Delete(_db.DataProvider);
+        }
+
+
+        public static void Delete(Expression<Func<Waybill, bool>> expression) {
+            var repo = GetRepo();
+            
+            
+            List<Waybill> items=repo.GetAll().Where(expression).ToList();
+            items.ForEach(x=>x.isDeleted=true);
+            repo.Update(items);
+            
+        }
+
+                
+        public static void Destroy(Func<Waybill, bool> expression) {
+            var repo = GetRepo();
+            repo.Delete(expression);
+        }
+        
+        public static void Destroy(object key) {
+            var repo = GetRepo();
+            repo.Delete(key);
+        }
+        
+        public static void Destroy(object key, IDataProvider provider) {
+        
+            var repo = GetRepo();
+            repo.Delete(key,provider);
+            
+        }        
+        
+        public void Destroy() {
+            _repo.Delete(KeyValue());
+        }        
+        public void Destroy(IDataProvider provider) {
+            _repo.Delete(KeyValue(), provider);
+        }         
+        
+
+        public void Load(IDataReader rdr) {
+            Load(rdr, true);
+        }
+        public void Load(IDataReader rdr, bool closeReader) {
+            if (rdr.Read()) {
+
+                try {
+                    rdr.Load(this);
+                    SetIsNew(false);
+                    SetIsLoaded(true);
+                } catch {
+                    SetIsLoaded(false);
+                    throw;
+                }
+            }else{
+                SetIsLoaded(false);
+            }
+
+            if (closeReader)
+                rdr.Dispose();
+        }
+        
+
+    } 
+    
+    
+    /// <summary>
     /// A class which represents the Locations table in the Core Database.
     /// </summary>
     public partial class Location: IActiveRecord
@@ -7477,6 +6713,873 @@ namespace Core
             
         }
 
+        
+
+        public void Load(IDataReader rdr) {
+            Load(rdr, true);
+        }
+        public void Load(IDataReader rdr, bool closeReader) {
+            if (rdr.Read()) {
+
+                try {
+                    rdr.Load(this);
+                    SetIsNew(false);
+                    SetIsLoaded(true);
+                } catch {
+                    SetIsLoaded(false);
+                    throw;
+                }
+            }else{
+                SetIsLoaded(false);
+            }
+
+            if (closeReader)
+                rdr.Dispose();
+        }
+        
+
+    } 
+    
+    
+    /// <summary>
+    /// A class which represents the BillOfLading table in the Core Database.
+    /// </summary>
+    public partial class BillOfLading: IActiveRecord
+    {
+    
+        #region Built-in testing
+        static TestRepository<BillOfLading> _testRepo;
+        
+
+        
+        static void SetTestRepo(){
+            _testRepo = _testRepo ?? new TestRepository<BillOfLading>(new Core.CoreDB());
+        }
+        public static void ResetTestRepo(){
+            _testRepo = null;
+            SetTestRepo();
+        }
+        public static void Setup(List<BillOfLading> testlist){
+            SetTestRepo();
+            foreach (var item in testlist)
+            {
+                _testRepo._items.Add(item);
+            }
+        }
+        public static void Setup(BillOfLading item) {
+            SetTestRepo();
+            _testRepo._items.Add(item);
+        }
+        public static void Setup(int testItems) {
+            SetTestRepo();
+            for(int i=0;i<testItems;i++){
+                BillOfLading item=new BillOfLading();
+                _testRepo._items.Add(item);
+            }
+        }
+        
+        public bool TestMode = false;
+
+
+        #endregion
+
+        IRepository<BillOfLading> _repo;
+        ITable tbl;
+        bool _isNew;
+        public bool IsNew(){
+            return _isNew;
+        }
+        
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+            if(isLoaded)
+                OnLoaded();
+        }
+        
+        public void SetIsNew(bool isNew){
+            _isNew=isNew;
+        }
+        bool _isLoaded;
+        public bool IsLoaded(){
+            return _isLoaded;
+        }
+                
+        List<IColumn> _dirtyColumns;
+        public bool IsDirty(){
+            return _dirtyColumns.Count>0;
+        }
+        
+        public List<IColumn> GetDirtyColumns (){
+            return _dirtyColumns;
+        }
+
+        Core.CoreDB _db;
+        public BillOfLading(string connectionString, string providerName) {
+
+            _db=new Core.CoreDB(connectionString, providerName);
+            Init();            
+         }
+        void Init(){
+            TestMode=this._db.DataProvider.ConnectionString.Equals("test", StringComparison.InvariantCultureIgnoreCase);
+            _dirtyColumns=new List<IColumn>();
+            if(TestMode){
+                BillOfLading.SetTestRepo();
+                _repo=_testRepo;
+            }else{
+                _repo = new SubSonicRepository<BillOfLading>(_db);
+            }
+            tbl=_repo.GetTable();
+            SetIsNew(true);
+            OnCreated();       
+
+        }
+        
+        public BillOfLading(){
+             _db=new Core.CoreDB();
+            Init();            
+        }
+        
+       
+        partial void OnCreated();
+            
+        partial void OnLoaded();
+        
+        partial void OnSaved();
+        
+        partial void OnChanged();
+        
+        public IList<IColumn> Columns{
+            get{
+                return tbl.Columns;
+            }
+        }
+
+        public BillOfLading(Expression<Func<BillOfLading, bool>> expression):this() {
+
+            SetIsLoaded(_repo.Load(this,expression));
+        }
+        
+       
+        
+        internal static IRepository<BillOfLading> GetRepo(string connectionString, string providerName){
+            Core.CoreDB db;
+            if(String.IsNullOrEmpty(connectionString)){
+                db=new Core.CoreDB();
+            }else{
+                db=new Core.CoreDB(connectionString, providerName);
+            }
+            IRepository<BillOfLading> _repo;
+            
+            if(db.TestMode){
+                BillOfLading.SetTestRepo();
+                _repo=_testRepo;
+            }else{
+                _repo = new SubSonicRepository<BillOfLading>(db);
+            }
+            return _repo;        
+        }       
+        
+        internal static IRepository<BillOfLading> GetRepo(){
+            return GetRepo("","");
+        }
+        
+        public static BillOfLading SingleOrDefault(Expression<Func<BillOfLading, bool>> expression) {
+
+            var repo = GetRepo();
+            var results=repo.Find(expression);
+            BillOfLading single=null;
+            if(results.Count() > 0){
+                single=results.ToList()[0];
+                single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
+
+            return single;
+        }      
+        
+        public static BillOfLading SingleOrDefault(Expression<Func<BillOfLading, bool>> expression,string connectionString, string providerName) {
+            var repo = GetRepo(connectionString,providerName);
+            var results=repo.Find(expression);
+            BillOfLading single=null;
+            if(results.Count() > 0){
+                single=results.ToList()[0];
+            }
+
+            return single;
+
+
+        }
+        
+        
+        public static bool Exists(Expression<Func<BillOfLading, bool>> expression,string connectionString, string providerName) {
+           
+            return All(connectionString,providerName).Any(expression);
+        }        
+        public static bool Exists(Expression<Func<BillOfLading, bool>> expression) {
+           
+            return All().Any(expression);
+        }        
+
+        public static IList<BillOfLading> Find(Expression<Func<BillOfLading, bool>> expression) {
+            
+            var repo = GetRepo();
+            return repo.Find(expression).ToList();
+        }
+        
+        public static IList<BillOfLading> Find(Expression<Func<BillOfLading, bool>> expression,string connectionString, string providerName) {
+
+            var repo = GetRepo(connectionString,providerName);
+            return repo.Find(expression).ToList();
+
+        }
+        public static IQueryable<BillOfLading> All(string connectionString, string providerName) {
+            return GetRepo(connectionString,providerName).GetAll();
+        }
+        public static IQueryable<BillOfLading> All() {
+            return GetRepo().GetAll();
+        }
+        
+        public static PagedList<BillOfLading> GetPaged(string sortBy, int pageIndex, int pageSize,string connectionString, string providerName) {
+            return GetRepo(connectionString,providerName).GetPaged(sortBy, pageIndex, pageSize);
+        }
+      
+        public static PagedList<BillOfLading> GetPaged(string sortBy, int pageIndex, int pageSize) {
+            return GetRepo().GetPaged(sortBy, pageIndex, pageSize);
+        }
+
+        public static PagedList<BillOfLading> GetPaged(int pageIndex, int pageSize,string connectionString, string providerName) {
+            return GetRepo(connectionString,providerName).GetPaged(pageIndex, pageSize);
+            
+        }
+
+
+        public static PagedList<BillOfLading> GetPaged(int pageIndex, int pageSize) {
+            return GetRepo().GetPaged(pageIndex, pageSize);
+            
+        }
+
+        public string KeyName()
+        {
+            return "ID";
+        }
+
+        public object KeyValue()
+        {
+            return this.ID;
+        }
+        
+        public void SetKeyValue(object value) {
+            if (value != null && value!=DBNull.Value) {
+                var settable = value.ChangeTypeTo<int>();
+                this.GetType().GetProperty(this.KeyName()).SetValue(this, settable, null);
+            }
+        }
+        
+        public override string ToString(){
+                            return this.noPackages.ToString();
+                    }
+
+        public override bool Equals(object obj){
+            if(obj.GetType()==typeof(BillOfLading)){
+                BillOfLading compare=(BillOfLading)obj;
+                return compare.KeyValue()==this.KeyValue();
+            }else{
+                return base.Equals(obj);
+            }
+        }
+
+        
+        public override int GetHashCode() {
+            return this.ID;
+        }
+        
+        public string DescriptorValue()
+        {
+                            return this.noPackages.ToString();
+                    }
+
+        public string DescriptorColumn() {
+            return "noPackages";
+        }
+        public static string GetKeyColumn()
+        {
+            return "ID";
+        }        
+        public static string GetDescriptorColumn()
+        {
+            return "noPackages";
+        }
+        
+        #region ' Foreign Keys '
+        #endregion
+        
+
+        int _ID;
+        public int ID
+        {
+            get { return _ID; }
+            set
+            {
+                if(_ID!=value){
+                    _ID=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="ID");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        int? _consigneeID;
+        public int? consigneeID
+        {
+            get { return _consigneeID; }
+            set
+            {
+                if(_consigneeID!=value){
+                    _consigneeID=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="consigneeID");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        int? _shipperID;
+        public int? shipperID
+        {
+            get { return _shipperID; }
+            set
+            {
+                if(_shipperID!=value){
+                    _shipperID=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="shipperID");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        int? _carTypeRequestedID;
+        public int? carTypeRequestedID
+        {
+            get { return _carTypeRequestedID; }
+            set
+            {
+                if(_carTypeRequestedID!=value){
+                    _carTypeRequestedID=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="carTypeRequestedID");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        int? _carLengthRequested;
+        public int? carLengthRequested
+        {
+            get { return _carLengthRequested; }
+            set
+            {
+                if(_carLengthRequested!=value){
+                    _carLengthRequested=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="carLengthRequested");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        int? _carCapacityRequested;
+        public int? carCapacityRequested
+        {
+            get { return _carCapacityRequested; }
+            set
+            {
+                if(_carCapacityRequested!=value){
+                    _carCapacityRequested=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="carCapacityRequested");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        string _noPackages;
+        public string noPackages
+        {
+            get { return _noPackages; }
+            set
+            {
+                if(_noPackages!=value){
+                    _noPackages=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="noPackages");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        string _descriptionOfArticles;
+        public string descriptionOfArticles
+        {
+            get { return _descriptionOfArticles; }
+            set
+            {
+                if(_descriptionOfArticles!=value){
+                    _descriptionOfArticles=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="descriptionOfArticles");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        string _displayText;
+        public string displayText
+        {
+            get { return _displayText; }
+            set
+            {
+                if(_displayText!=value){
+                    _displayText=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="displayText");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        bool? _isPerishable;
+        public bool? isPerishable
+        {
+            get { return _isPerishable; }
+            set
+            {
+                if(_isPerishable!=value){
+                    _isPerishable=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="isPerishable");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        bool? _isPreIce;
+        public bool? isPreIce
+        {
+            get { return _isPreIce; }
+            set
+            {
+                if(_isPreIce!=value){
+                    _isPreIce=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="isPreIce");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        bool? _isInitialIce;
+        public bool? isInitialIce
+        {
+            get { return _isInitialIce; }
+            set
+            {
+                if(_isInitialIce!=value){
+                    _isInitialIce=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="isInitialIce");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        int? _cps;
+        public int? cps
+        {
+            get { return _cps; }
+            set
+            {
+                if(_cps!=value){
+                    _cps=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="cps");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        bool? _isEmptyCarRequested;
+        public bool? isEmptyCarRequested
+        {
+            get { return _isEmptyCarRequested; }
+            set
+            {
+                if(_isEmptyCarRequested!=value){
+                    _isEmptyCarRequested=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="isEmptyCarRequested");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        bool? _isLiveStock;
+        public bool? isLiveStock
+        {
+            get { return _isLiveStock; }
+            set
+            {
+                if(_isLiveStock!=value){
+                    _isLiveStock=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="isLiveStock");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        bool? _isReverseRoute;
+        public bool? isReverseRoute
+        {
+            get { return _isReverseRoute; }
+            set
+            {
+                if(_isReverseRoute!=value){
+                    _isReverseRoute=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="isReverseRoute");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        bool? _isReturnEmpty;
+        public bool? isReturnEmpty
+        {
+            get { return _isReturnEmpty; }
+            set
+            {
+                if(_isReturnEmpty!=value){
+                    _isReturnEmpty=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="isReturnEmpty");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        decimal? _requestedCarsPerDay;
+        public decimal? requestedCarsPerDay
+        {
+            get { return _requestedCarsPerDay; }
+            set
+            {
+                if(_requestedCarsPerDay!=value){
+                    _requestedCarsPerDay=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="requestedCarsPerDay");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        int? _timeToUnload;
+        public int? timeToUnload
+        {
+            get { return _timeToUnload; }
+            set
+            {
+                if(_timeToUnload!=value){
+                    _timeToUnload=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="timeToUnload");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        int? _timeToLoad;
+        public int? timeToLoad
+        {
+            get { return _timeToLoad; }
+            set
+            {
+                if(_timeToLoad!=value){
+                    _timeToLoad=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="timeToLoad");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        bool? _isDeleted;
+        public bool? isDeleted
+        {
+            get { return _isDeleted; }
+            set
+            {
+                if(_isDeleted!=value){
+                    _isDeleted=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="isDeleted");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        DateTime? _createdOn;
+        public DateTime? createdOn
+        {
+            get { return _createdOn; }
+            set
+            {
+                if(_createdOn!=value){
+                    _createdOn=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="createdOn");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+        DateTime? _modifiedOn;
+        public DateTime? modifiedOn
+        {
+            get { return _modifiedOn; }
+            set
+            {
+                if(_modifiedOn!=value){
+                    _modifiedOn=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="modifiedOn");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+
+
+        public DbCommand GetUpdateCommand() {
+            if (!_dirtyColumns.Any(x => x.Name.ToLower() == "modifiedon")) {
+               this.modifiedOn=CoreDB.DateTimeNowTruncatedDownToSecond();
+            }            
+            if(TestMode)
+                return _db.DataProvider.CreateCommand();
+            else
+                return this.ToUpdateQuery(_db.Provider).GetCommand().ToDbCommand();
+            
+        }
+        public DbCommand GetInsertCommand() {
+ 
+            if(TestMode)
+                return _db.DataProvider.CreateCommand();
+            else
+                return this.ToInsertQuery(_db.Provider).GetCommand().ToDbCommand();
+        }
+        
+        public DbCommand GetDeleteCommand() {
+            if(TestMode)
+                return _db.DataProvider.CreateCommand();
+            else
+                return this.ToDeleteQuery(_db.Provider).GetCommand().ToDbCommand();
+        }
+       
+        
+        public void Update(){
+            Update(_db.DataProvider);
+        }
+        
+        public void Update(IDataProvider provider){
+        
+            
+            if(this._dirtyColumns.Count>0){
+                _repo.Update(this,provider);
+                _dirtyColumns.Clear();    
+            }
+            OnSaved();
+       }
+ 
+        public void Add(){
+            Add(_db.DataProvider);
+        }
+        
+        
+       
+        public void Add(IDataProvider provider){
+
+            
+            var key=KeyValue();
+            if(key==null){
+                var newKey=_repo.Add(this,provider);
+                this.SetKeyValue(newKey);
+            }else{
+                _repo.Add(this,provider);
+            }
+            SetIsNew(false);
+            OnSaved();
+        }
+        
+                
+        
+        public void Save() {
+            Save(_db.DataProvider);
+        }      
+        public void Save(IDataProvider provider) {
+            
+           
+            if (_isNew) {
+                Add(provider);
+                
+            } else {
+                Update(provider);
+            }
+            
+        }
+
+        
+
+        public void Delete(IDataProvider provider) {
+                         
+             this.isDeleted=true;
+            _repo.Update(this,provider);
+                
+                    }
+
+
+        public void Delete() {
+            Delete(_db.DataProvider);
+        }
+
+
+        public static void Delete(Expression<Func<BillOfLading, bool>> expression) {
+            var repo = GetRepo();
+            
+            
+            List<BillOfLading> items=repo.GetAll().Where(expression).ToList();
+            items.ForEach(x=>x.isDeleted=true);
+            repo.Update(items);
+            
+        }
+
+                
+        public static void Destroy(Func<BillOfLading, bool> expression) {
+            var repo = GetRepo();
+            repo.Delete(expression);
+        }
+        
+        public static void Destroy(object key) {
+            var repo = GetRepo();
+            repo.Delete(key);
+        }
+        
+        public static void Destroy(object key, IDataProvider provider) {
+        
+            var repo = GetRepo();
+            repo.Delete(key,provider);
+            
+        }        
+        
+        public void Destroy() {
+            _repo.Delete(KeyValue());
+        }        
+        public void Destroy(IDataProvider provider) {
+            _repo.Delete(KeyValue(), provider);
+        }         
         
 
         public void Load(IDataReader rdr) {
